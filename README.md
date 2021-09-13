@@ -546,7 +546,9 @@ No sistema operacional Linux a estrutura de diretórios é diferente da estrutur
 
 Podemos obter mais informações a respeito da hierarquia do sistema de arquivos com o seguinte comando.
 
+```bash
 root@flownerd:~# man hier
+```
 
 # **Tipos de arquivos**
 
