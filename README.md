@@ -1030,9 +1030,502 @@ systemd-coredump                           **Nunca logou**
 
 Lastb armazena as tentativas de login mal sucessidadas que em alguns casos podem identificar uma tentativa de invasão, o seu conteúdo é armazenado no arquivo: **/var/log/btmp**. A seguir, veja um exemplo do comando lastb.
 
-```
+```bash
 root@flownerd:~# lastb
 douglas  ssh:notty    192.168.0.101    Mon Sep 13 12:01 - 12:01  (00:00)
 
 btmp inicia Mon Sep 13 12:01:24 2021
+```
+
+# **Primeiros comandos e documentações**
+
+## **Navegando e Manipulando o Sistema de Arquivos**
+
+### **O Comando Ls**
+
+Este comando lista informações sobre os arquivos e diretórios.
+
+Vamos ver o exemplo do comando ls
+
+```bash
+root@flownerd:~# ls /
+bin   dev  home        initrd.img.old  lib32  libx32	  media  opt   root  sbin  sys	usr  vmlinuz
+boot  etc  initrd.img  lib	       lib64  lost+found  mnt	 proc  run   srv   tmp	var  vmlinuz.old
+```
+
+Este comando ls tem muitas opções vamos destacar algumas abaixo:
+
+#### **Parâmetros do Comando ls**
+
+| **_Parâmetro_** | **_Descrição_**                                                                                                   |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------- |
+| _-a_            | _Lista todas as entradas no diretório e arquivos ocultos_                                                         |
+| _-B_            | _Não lista arquivos que terminem com ~ que são arquivos de backup automático_                                     |
+| _--color_       | _Mostra a saída do comando com cores diferenciando os tipos de arquivos, opções podem ser: always, never ou auto_ |
+| _-d_            | _Lista os diretórios ao invés de seus conteúdos_                                                                  |
+| _-F_            | \*Adiciona indicadores de tipo podem ser (\*/=>@) para as entradas\*                                              |
+| _-g_            | _Igualmente a opção de -l porém não lista o usuário dono_                                                         |
+| _-G_            | _Com a opção -l para não listar o grupo dono_                                                                     |
+| _-h_            | _Com a opção -l mostra o tamanho em formato (K,M,G,T)_                                                            |
+| _-i_            | _Mostra o inode do arquivo_                                                                                       |
+| _-l_            | _Mostra a saída em formato de lista longa_                                                                        |
+| _-n_            | _Igualmente a opção -l mas mostra a saída em formato numérico para usuários e grupos_                             |
+| _-Q_            | _Mostra a saída entre aspas duplas “”_                                                                            |
+| _-r_            | _Inverte a ordem da listagem_                                                                                     |
+| _-R_            | _Faz a listagem recursiva_                                                                                        |
+| _-S_            | _Com a opção -l ordena pelo tamanho dos arquivos_                                                                 |
+| _-t_            | _Ordena pela data de modificação, o mais novo primeiro_                                                           |
+| _-x_            | _Lista as entradas por linhas ao invés de colunas_                                                                |
+| _-X_            | _Com a opção -l ordena de forma alfabética por tipo de extensão_                                                  |
+| _-Z_            | _Com a opção -l mostra as entradas SELinux para cada arquivo_                                                     |
+| _-1_            | _Lista um arquivo por linha_                                                                                      |
+
+Nós podemos fazer a utilização do comando ls com múltiplas opções por exemplo: Uma listagem dos arquivos do diretório /root mostrando os arquivos ocultos e ordenando de forma reversa pode ser efetuada da seguinte forma
+
+```bash
+root@flownerd:~# ls -lar /root
+total 20
+-rw-r--r--  1 root root  161 jul  9  2019 .profile
+-rw-r--r--  1 root root  571 abr 10 17:00 .bashrc
+-rw-------  1 root root  254 set 13 14:25 .bash_history
+drwxr-xr-x 18 root root 4096 set 12 13:24 ..
+drwx------  2 root root 4096 set 12 13:31 .
+```
+
+### **Metacaracteres (caracteres coringas)**
+
+Os metacaracteres são caracteres que possuem uma propriedade especial no interpretador de comandos. Além disso, eles são utilizados para facilitar o emprego dos comandos no Linux, principalmente quando se trabalha com a manipulação de arquivos.
+
+#### **O caractere “?”**
+
+Quando um nome de arquivo é esperado, ele casa com um caractere qualquer, ou seja, a ? representa um único e qualquer caractere no nome de um arquivo. Por exemplo:
+
+Primeiramente serão criados alguns arquivos como modelo para que se possa analisar o resultado do uso da “?”.
+
+```bash
+root@flownerd:~# touch flownerd.txt flownerd1.txt flownerd2.txt
+```
+
+Agora serão usados os metacaracteres para filtrar a listagem dos arquivos “flownerd” que foram criados.
+
+```bash
+root@flownerd:~# ls -l flownerd?.txt
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd1.txt
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd2.txt
+```
+
+#### **O Caractere \* (asterisco)**
+
+Este é um caractere coringa que substitui qualquer caractere referenciado, não importando a quantidade de vezes de substituições, diferente do “?”, que substitui apenas um único caractere.
+
+**_Exemplo:_**
+
+```bash
+root@flownerd:~# ls -l flownerd*.txt
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd1.txt
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd2.txt
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd.txt
+```
+
+Vamos listar todos os arquivos que comecem com flownerd
+
+```bash
+root@flownerd:~# ls -l flownerd.*
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd.txt
+```
+
+Agora vamos ver um exemplo combinando os caracteres especiais
+
+```bash
+root@flownerd:~# ls -l flownerd?.*
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd1.txt
+-rw-r--r-- 1 root root 0 set 13 23:36 flownerd2.txt
+```
+
+Com esses metacaracteres pode-se, filtrar vários resultados no sistema, a fim de manipular os nossos comandos.
+
+### **O Comando cd**
+
+Para entrar e sair de diretórios, podemos fazer a utilização do comando cd.
+
+Para entramos no diretório /etc podemos executar o seguinte comando
+
+```bash
+root@flownerd:~# cd /etc
+```
+
+Para voltar um diretório podemos executar o seguinte comando
+
+```bash
+root@flownerd:/etc# cd ..
+```
+
+Agora se precisar voltar para o diretório anteriormente acessado podemos utilizar o seguinte comando
+
+```bash
+root@flownerd:~# cd -
+```
+
+Se precisar acessar o diretório home do usuário atualmente logado podemos utilizar o seguinte comando
+
+```bash
+root@flownerd:~# cd ~
+```
+
+### **O Comando pwd**
+
+Para saber em que nível hierárquico de diretório estamos, basta usar o comando pwd que vai nos retornar em qual diretório estamos.
+
+```bash
+root@flownerd:~# pwd
+/root
+```
+
+### **O Comando mkdir**
+
+Para criar diretórios podemos utilizar o comando mkdir como abaixo
+
+```bash
+root@flownerd:~# mkdir flownerd
+```
+
+Se precisar criar um diretório e um subdiretório de uma vez podemos utilizar a opção -p que vai criar os diretórios dependentes
+
+```bash
+root@flownerd:~# mkdir -p /aula/flownerd/fundamentos
+```
+
+Agora por exemplo se precisarmos criar um diretório que o seu nome contenha espaço podemos utilizar as aspas “” para efetuar a criação da seguinte forma
+
+```bash
+root@flownerd:~# mkdir -p "meu diretorio"
+```
+
+### **O Comando touch**
+
+O comando touch pode ser utilizado para criar um arquivo vazio, porem ele é utilizado para alterar o timestamps do arquivo, ou seja ele atualiza a hora de acesso e modificação do arquivo.
+
+Por exemplo para criarmos um arquivo vazio podemos utilizar o touch da seguinte forma:
+
+```bash
+root@flownerd:~# touch flownerd.doc
+```
+
+Agora vamos listar o arquivo para verificarmos as suas propriedades
+
+```bash
+root@flownerd:~# ls -l
+total 0
+-rw-r--r-- 1 root root 0 set 13 23:44 flownerd.doc
+```
+
+Note que o nosso arquivo tem tamanho 0 e a data de criação é 8 de junho as 12:26. Agora se eu executar o touch neste arquivo vai ser atualizada a data de acesso dele, vamos testar
+
+```bash
+root@flownerd:~# touch flownerd.doc
+```
+
+Agora se eu listar o arquivo novamente vou ter outra hora de acesso
+
+```bash
+root@flownerd:~# ls -l
+total 0
+-rw-r--r-- 1 root root 0 set 13 23:45 flownerd.doc
+```
+
+### **O comando cp**
+
+O comando cp é utilizado para copiar de uma origem para um destino podendo ser um arquivo ou diretório ou podemos copiar múltiplas origem para um destino também.
+
+Vamos a um exemplo vamos copiar o arquivo /etc/resolv.conf para o diretório /srv
+
+```bash
+root@flownerd:~# cp /etc/resolv.conf /srv
+```
+
+Vamos listar o /srv para verificar a nossa copia
+
+```bash
+root@flownerd:~# ls -l /srv
+total 4
+-rw-r--r-- 1 root root 60 set 13 23:45 resolv.conf
+```
+
+Agora se eu precisar dois ou mais arquivos de uma única vez eu posso fazer da seguinte forma
+
+```bash
+root@flownerd:~# cp /etc/network/interfaces /etc/motd /srv
+```
+
+Agora vamos listar o /srv para verificarmos a nossa copia
+
+```bash
+root@flownerd:~# ls -l /srv/
+total 12
+-rw-r--r-- 1 root root 498 set 13 23:46 interfaces
+-rw-r--r-- 1 root root 286 set 13 23:46 motd
+-rw-r--r-- 1 root root  60 set 13 23:45 resolv.conf
+```
+
+Note que os nosso arquivos estão lá.
+
+Agora se eu precisar copiar um diretório e todo o seu conteúdo eu preciso passar a opção -r que orienta o cp a copiar o diretório e todo o seu conteúdo de forma recursiva
+
+Vamos a um exemplo
+
+```bash
+root@flownerd:~# cp -r /etc/network /srv
+```
+
+Aqui copiamos o nosso diretório /etc/network para o diretório /srv, vamos listar a nossa copia
+
+```bash
+root@flownerd:~# ls -l /srv/
+total 16
+-rw-r--r-- 1 root root  498 set 13 23:46 interfaces
+-rw-r--r-- 1 root root  286 set 13 23:46 motd
+drwxr-xr-x 7 root root 4096 set 13 23:47 network
+-rw-r--r-- 1 root root   60 set 13 23:45 resolv.conf
+```
+
+#### **Parâmetros do Comando cp:**
+
+| **_Parâmetro_** | **_Descrição_**                                                                               |
+| :-------------- | :-------------------------------------------------------------------------------------------- |
+| _-a_            | _Copia os arquivos ou diretórios preservando as permissões e links_                           |
+| _-f_            | _Sobrescreve arquivos ou diretórios sem perguntar_                                            |
+| _-i_            | _Utiliza o modo interativo perguntando se deseja ou não sobrescrever um diretório ou arquivo_ |
+| _-p_            | _Preserva permissões e data de criação_                                                       |
+| _-R ou -r_      | _Copia os diretórios de forma recursiva_                                                      |
+
+### **O comando mv**
+
+O comando mv é utilizado para mover ou renomear de uma origem para um destino ou podemos copiar múltiplas origem para um destino também.
+
+```bash
+root@flownerd:~# mv flownerd.txt flownerd.old
+```
+
+Podemos também copiar múltiplos arquivos para um diretório vamos ver o exemplo abaixo:
+
+```bash
+root@flownerd:~# mv flownerd*.* /srv
+```
+
+Agora vamos listar os nossos arquivos no diretório /srv
+
+```bash
+root@flownerd:~# ls -l /srv/
+total 16
+-rw-r--r-- 1 root root    0 set 13 23:45 flownerd.doc
+-rw-r--r-- 1 root root    0 set 13 23:49 flownerd.old
+-rw-r--r-- 1 root root  498 set 13 23:46 interfaces
+-rw-r--r-- 1 root root  286 set 13 23:46 motd
+drwxr-xr-x 7 root root 4096 set 13 23:47 network
+-rw-r--r-- 1 root root   60 set 13 23:45 resolv.conf
+```
+
+#### **Parâmetros do Comando mv:**
+
+| **_Parâmetro_** | **_Descrição_**                                                                               |
+| :-------------- | :-------------------------------------------------------------------------------------------- |
+| _-f_            | _Sobrescreve arquivos ou diretórios sem perguntar_                                            |
+| _-i_            | _Utiliza o modo interativo perguntando se deseja ou não sobrescrever um diretório ou arquivo_ |
+| _-u_            | _Move somente quando a origem é mais nova que no destino_                                     |
+
+### **O comando rm**
+
+O comando rm é utilizado para remover arquivos ou diretório, porém não padrão o rm não remove diretórios por padrão precisamos especificar esta ação.
+
+```bash
+root@flownerd:~# rm /srv/resolv.conf
+```
+
+Agora vamos listar o diretório para checarmos se o arquivo foi ou não deletado.
+
+```bash
+root@flownerd:~# ls -l /srv
+total 12
+-rw-r--r-- 1 root root    0 set 13 23:45 flownerd.doc
+-rw-r--r-- 1 root root    0 set 13 23:49 flownerd.old
+-rw-r--r-- 1 root root  498 set 13 23:46 interfaces
+-rw-r--r-- 1 root root  286 set 13 23:46 motd
+drwxr-xr-x 7 root root 4096 set 13 23:47 network
+```
+
+Note que não existe mais o arquivo resolv.conf no diretório /srv, agora vamos mandar remover o diretório network que está no diretório /srv
+
+```bash
+root@flownerd:~# rm /srv/network
+rm: não foi possível remover '/srv/network': É um diretório
+```
+
+Note que não podemos remover o diretório /srv/network pois não passamos o parâmetro para remover diretórios
+
+Vamos passar o parâmetro -r agora para remover o diretório
+
+```bash
+root@flownerd:~# rm -r /srv/network
+```
+
+Agora vamos listar o diretório para checarmos se o diretório foi ou não removido
+
+```bash
+root@flownerd:~# ls -l /srv/
+total 8
+-rw-r--r-- 1 root root   0 set 13 23:45 flownerd.doc
+-rw-r--r-- 1 root root   0 set 13 23:49 flownerd.old
+-rw-r--r-- 1 root root 498 set 13 23:46 interfaces
+-rw-r--r-- 1 root root 286 set 13 23:46 motd
+```
+
+Como podemos notar não existe mais o diretório network em /srv
+
+#### **Parâmetros do Comando rm**
+
+| **_Parâmetro_** | **_Descrição_**                                                                               |
+| :-------------- | :-------------------------------------------------------------------------------------------- |
+| _-f_            | _Sobrescreve arquivos ou diretórios sem perguntar_                                            |
+| _-i_            | _Utiliza o modo interativo perguntando se deseja ou não sobrescrever um diretório ou arquivo_ |
+| _-r ou -R_      | _Remove diretório(s) e seu(s) conteúdo(s) recursivamente_                                     |
+
+**\*OBS:** O comando rm -rf pode ser fatal para o sistema quando executado de maneira errada, pois podemos remover o sistema inteiro\*
+
+### **O comando rmdir**
+
+O comando rmdir é utilizado para remover diretório(s) vazio(s).
+
+Vamos efetuar um teste vamos criar o diretório /etc/network para o /srv
+
+```bash
+root@flownerd:~# cp -r /etc/network /srv
+```
+
+Agora vamos tentar remover ele com o rmdir
+
+```bash
+root@flownerd:~# rmdir /srv/network
+rmdir: falhou em remover '/srv/network': Arquivo ou diretório inexistente
+```
+
+Note que não conseguimos remover porque o diretório não esta vazio, vamos fazer mais um teste. Vamos criar um diretório vazio
+
+```bash
+root@flownerd:~# mkdir /srv/empty
+```
+
+Agora vamos tentar remover ele
+
+```bash
+root@flownerd:~# rmdir /srv/empty
+```
+
+Note que agora não recebemos nenhum aviso, vamos checar no /srv se o diretório foi removido.
+
+```bash
+root@flownerd:~# ls -l /srv/
+total 8
+-rw-r--r-- 1 root root   0 set 13 23:45 flownerd.doc
+-rw-r--r-- 1 root root   0 set 13 23:49 flownerd.old
+-rw-r--r-- 1 root root 498 set 13 23:46 interfaces
+-rw-r--r-- 1 root root 286 set 13 23:46 motd
+```
+
+Nos podemos remover um arvore de diretórios vazia por exemplo, vamos testar vamos criar 3 diretórios em sequencia.
+
+```bash
+root@flownerd:~# mkdir -p a/b/c
+```
+
+Vamos listar o diretório a para verificar o seu conteúdo
+
+```bash
+root@flownerd:~# ls -lR a
+a:
+total 4
+drwxr-xr-x 3 root root 4096 set 14 09:48 b
+
+a/b:
+total 4
+drwxr-xr-x 2 root root 4096 set 14 09:48 c
+
+a/b/c:
+total 0
+```
+
+Agora vamos remover eles de uma vez
+
+```bash
+root@flownerd:~# rmdir -p a/b/c
+```
+
+Como podemos notar não tivermos nenhum erro de retorno.
+
+### **O comando file**
+
+O comando file determina o tipo de arquivo, pois podemos ter um arquivo com a extensão .txt sendo um arquivo .mp3 ou o inverso vamos a um exemplo, vamos criar um arquivo chamado tocar.mp3
+
+```bash
+root@flownerd:~# touch tocar.mp3
+```
+
+Agora vamos listar o nosso arquivo
+
+```bash
+root@flownerd:~# ls -l tocar.mp3
+-rw-r--r-- 1 root root 0 set 14 09:49 tocar.mp3
+```
+
+Note que a única informação que temos é que o nosso arquivo é regular pelo caractere identificar “-”
+
+Agora vamos checar ele com o comando file
+
+```bash
+root@flownerd:~# file tocar.mp3
+tocar.mp3: empty
+```
+
+Como podemos notar o file identificou o nosso arquivo como sendo um arquivo vazio, vamos checar um arquivo binário por exemplo para verificar o resultado
+
+Vamos listar o arquivo /bin/bash
+
+```bash
+root@flownerd:~#  ls -l /bin/bash
+-rwxr-xr-x 1 root root 1234376 ago  4 17:25 /bin/bash
+```
+
+Note que a única informação que temos é que o nosso arquivo é regular como o tocar.mp3, agora vamos verificar o nosso arquivo com o comando file.
+
+```bash
+root@flownerd:~# file /bin/bash
+/bin/bash: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=3313b4cb119dcce16927a9b6cc61dcd97dfc4d59, for GNU/Linux 3.2.0, stripped
+```
+
+Note que o resultado é diferente, pois temos um arquivo binário
+
+Vamos checar outro arquivo o /etc/passwd por exemplo que é outro arquivo regular.
+
+```bash
+root@flownerd:~# file /etc/passwd
+/etc/passwd: ASCII text
+```
+
+### **O comando type**
+
+O comando type é utilizado para encontrar a localização de um comando ou se um arquivo é um comando interno.
+
+Vamos checar o comando passwd
+
+```bash
+root@flownerd:~# type passwd
+passwd é /usr/bin/passwd
+```
+
+Note que temos a localização do comando passwd que é /usr/bin/passwd
+
+Vamos checar o comando cd que é o comando para entrar ou sair de um diretório.
+
+```bash
+root@flownerd:~# type cd
+cd é um comando interno do shell
 ```
