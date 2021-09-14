@@ -225,9 +225,9 @@ O software de código aberto é aquele que disponibiliza seu código fonte e res
 
 Engana-se quem pensa ser um software livre todos aqueles programas grátis que encontramos por aí. Um software livre é muito mais do que isto. Vamos discorrer sobre o que é e quais são os mais utilizados neste artigo.
 
-Encontramos na internet diversos programas que não tem custo algum para se fazer download, dentro destes certamente estão os chamados softwares livres. Mas eles não se resumem à isso. A Free Software Foundation (FSF) descreve sua existência como : “Uma organização sem fins lucrativos com a missão mundial de promover a liberdade do usuário do computador e defender os direitos de todos os usuários de software livre”.
+Encontramos na internet diversos programas que não tem custo algum para se fazer download, dentro destes certamente estão os chamados softwares livres. Mas eles não se resumem à isso. A Free Software Foundation (FSF) descreve sua existência como : "Uma organização sem fins lucrativos com a missão mundial de promover a liberdade do usuário do computador e defender os direitos de todos os usuários de software livre".
 
-Segundo esta definição, a FSF é uma das fundações responsáveis por fiscalizar e organizar o leque de softwares livres espalhados pelo mundo, em outras palavras, os desenvolvedores de softwares devem seguir algumas diretrizes para enquadrar-se como software livre. Já não é mais tão simplório assim, é? A definição propriamente dita de “software livre” é: Aquele software que respeita a liberdade da comunidade dos usuários. O que significa esta liberdade? Significa que qualquer usuário tem caminho aberto para executar, estudar, distribuir, alterar, melhorar, piorar, copiar qualquer parte do software ou até mesmo ele por inteiro.
+Segundo esta definição, a FSF é uma das fundações responsáveis por fiscalizar e organizar o leque de softwares livres espalhados pelo mundo, em outras palavras, os desenvolvedores de softwares devem seguir algumas diretrizes para enquadrar-se como software livre. Já não é mais tão simplório assim, é? A definição propriamente dita de "software livre" é: Aquele software que respeita a liberdade da comunidade dos usuários. O que significa esta liberdade? Significa que qualquer usuário tem caminho aberto para executar, estudar, distribuir, alterar, melhorar, piorar, copiar qualquer parte do software ou até mesmo ele por inteiro.
 
 Você também pode associar as palavras Open Source (Código aberto) aos softwares livres. Este tema gera discussão entre os programadores e afins por conta de algum viés ideológico que diferencia de fato, um movimento do outro. A rigor, a diferença está na ideologia de cada parte. A Free Software Foundation está voltada para o ativismo político e ideológico.
 
@@ -249,11 +249,11 @@ Projeto da Sun Microsystems, posteriormente adquirida pela Oracle, utiliza uma p
 
 ### **Compilador C: GCC**
 
-Conhecido inicialmente como GNU Compilador para C, suporta nos dias de hoje diversas linguagens além da original “C”, com C++, Java, Ada e Fortran. Um software livre que atende à licença GPL e funciona em sistemas operacionais como UNIX, Linux e OS X.
+Conhecido inicialmente como GNU Compilador para C, suporta nos dias de hoje diversas linguagens além da original "C", com C++, Java, Ada e Fortran. Um software livre que atende à licença GPL e funciona em sistemas operacionais como UNIX, Linux e OS X.
 
 ### **Eclipse**
 
-Utilizado para desenvolver aplicações em Java. Por meio de plugins, outras linguagens podem ser utilizadas: C, C++, Fortran, Java Script, PHP, entre outros. O programa é “desenhado” quase totalmente em Java e a base do código é originária da IBM VisualAge. O Eclipse possui o código aberto, entretanto não é compatível como a licença GNU.
+Utilizado para desenvolver aplicações em Java. Por meio de plugins, outras linguagens podem ser utilizadas: C, C++, Fortran, Java Script, PHP, entre outros. O programa é "desenhado" quase totalmente em Java e a base do código é originária da IBM VisualAge. O Eclipse possui o código aberto, entretanto não é compatível como a licença GNU.
 
 ### **NetBeans**
 
@@ -525,11 +525,11 @@ Este é um dispositivo de rede, mas uma interface de rede Wireless (WI-FI)
 | **_Dispositivo_** | **_Descrição_**              |
 | :---------------- | :--------------------------- |
 | _wlan0_           | _Primeira interface de rede_ |
-| _wlan0_           | _Segunda interface de rede_  |
+| _wlan1_           | _Segunda interface de rede_  |
 
 # **Estrutura de diretórios Linux**
 
-No sistema operacional Linux a estrutura de diretórios é diferente da estrutura Microsoft, por exemplo no Windows a nossa primeira partição vai ser o “c:” no Linux é o “/” a raiz do sistema operacional. Vamos verificar os principais diretórios do nosso sistema.
+No sistema operacional Linux a estrutura de diretórios é diferente da estrutura Microsoft, por exemplo no Windows a nossa primeira partição vai ser o "c:" no Linux é o "/" a raiz do sistema operacional. Vamos verificar os principais diretórios do nosso sistema.
 
 ## **Tabela de diretórios**
 
@@ -566,7 +566,7 @@ Os tipos de arquivo que se pode encontrar no sistema GNU/Linux são identificado
 - Diretórios: são arquivos que permitem o armazenamento de outros arquivos em formato de árvore
 - Arquivos comuns: são arquivos gerais do sistema, tais como arquivos textos, imagens, entre outros
 - Arquivos especiais: são arquivos utilizados para comunicação com dispositivos como discos, portas de entrada e saída, entre outros. A maioria desse arquivos ficam armazenados no /dev
-- Links: são arquivos que são utilizados para permitir que um determinado arquivo fique disponível (ou visível) em vários locais do sistema. Um link é como se criar um “atalho” no sistema
+- Links: são arquivos que são utilizados para permitir que um determinado arquivo fique disponível (ou visível) em vários locais do sistema. Um link é como se criar um "atalho" no sistema
 - Sockets: são arquivos utilizados para comunicação entre processos executados no S.O. Sockets, na verdade, são pontos de comunicação que permitem que processos se comuniquem de maneira transparente
 - Pipes: são arquivos que facilitam a comunicação entre processos dentro do sistema
 
@@ -700,7 +700,7 @@ permitted by applicable law.
 Last login: Mon Sep 13 12:01:37 2021 from 192.168.0.101
 ```
 
-- Usuário root (ou superusuário): usuário com acesso total ao sistema. Conhecido também como “administrador”, ele é responsável pelo acesso ao sistema sem restrições e possui sinal # como identificador de prompt.
+- Usuário root (ou superusuário): usuário com acesso total ao sistema. Conhecido também como "administrador", ele é responsável pelo acesso ao sistema sem restrições e possui sinal # como identificador de prompt.
 
 Exemplo de login com o usuário root.
 
@@ -872,7 +872,7 @@ root@flownerd:~# shutdown -h now
 Manda o sinal de reiniciar a maquina em 60 minutos e informa todos os usuário logados da ação
 
 ```bash
-root@flownerd:~# shutdown -r 60 “Desligando a maquina em 60 Minutos”
+root@flownerd:~# shutdown -r 60 "Desligando a maquina em 60 Minutos"
 ```
 
 ### **O Comando Poweroff**
@@ -1079,7 +1079,7 @@ Este comando ls tem muitas opções vamos destacar algumas abaixo:
 | _-i_            | _Mostra o inode do arquivo_                                                                                       |
 | _-l_            | _Mostra a saída em formato de lista longa_                                                                        |
 | _-n_            | _Igualmente a opção -l mas mostra a saída em formato numérico para usuários e grupos_                             |
-| _-Q_            | _Mostra a saída entre aspas duplas “”_                                                                            |
+| _-Q_            | _Mostra a saída entre aspas duplas ""_                                                                            |
 | _-r_            | _Inverte a ordem da listagem_                                                                                     |
 | _-R_            | _Faz a listagem recursiva_                                                                                        |
 | _-S_            | _Com a opção -l ordena pelo tamanho dos arquivos_                                                                 |
@@ -1105,17 +1105,17 @@ drwx------  2 root root 4096 set 12 13:31 .
 
 Os metacaracteres são caracteres que possuem uma propriedade especial no interpretador de comandos. Além disso, eles são utilizados para facilitar o emprego dos comandos no Linux, principalmente quando se trabalha com a manipulação de arquivos.
 
-#### **O caractere “?”**
+#### **O caractere "?"**
 
 Quando um nome de arquivo é esperado, ele casa com um caractere qualquer, ou seja, a ? representa um único e qualquer caractere no nome de um arquivo. Por exemplo:
 
-Primeiramente serão criados alguns arquivos como modelo para que se possa analisar o resultado do uso da “?”.
+Primeiramente serão criados alguns arquivos como modelo para que se possa analisar o resultado do uso da "?".
 
 ```bash
 root@flownerd:~# touch flownerd.txt flownerd1.txt flownerd2.txt
 ```
 
-Agora serão usados os metacaracteres para filtrar a listagem dos arquivos “flownerd” que foram criados.
+Agora serão usados os metacaracteres para filtrar a listagem dos arquivos "flownerd" que foram criados.
 
 ```bash
 root@flownerd:~# ls -l flownerd?.txt
@@ -1125,7 +1125,7 @@ root@flownerd:~# ls -l flownerd?.txt
 
 #### **O Caractere \* (asterisco)**
 
-Este é um caractere coringa que substitui qualquer caractere referenciado, não importando a quantidade de vezes de substituições, diferente do “?”, que substitui apenas um único caractere.
+Este é um caractere coringa que substitui qualquer caractere referenciado, não importando a quantidade de vezes de substituições, diferente do "?", que substitui apenas um único caractere.
 
 **_Exemplo:_**
 
@@ -1204,7 +1204,7 @@ Se precisar criar um diretório e um subdiretório de uma vez podemos utilizar a
 root@flownerd:~# mkdir -p /aula/flownerd/fundamentos
 ```
 
-Agora por exemplo se precisarmos criar um diretório que o seu nome contenha espaço podemos utilizar as aspas “” para efetuar a criação da seguinte forma
+Agora por exemplo se precisarmos criar um diretório que o seu nome contenha espaço podemos utilizar as aspas "" para efetuar a criação da seguinte forma
 
 ```bash
 root@flownerd:~# mkdir -p "meu diretorio"
@@ -1485,7 +1485,7 @@ root@flownerd:~# ls -l tocar.mp3
 -rw-r--r-- 1 root root 0 set 14 09:49 tocar.mp3
 ```
 
-Note que a única informação que temos é que o nosso arquivo é regular pelo caractere identificar “-”
+Note que a única informação que temos é que o nosso arquivo é regular pelo caractere identificar "-"
 
 Agora vamos checar ele com o comando file
 
@@ -1538,3 +1538,218 @@ Vamos checar o comando cd que é o comando para entrar ou sair de um diretório.
 root@flownerd:~# type cd
 cd é um comando interno do shell
 ```
+
+## **Ligações (Links)**
+
+Links são pseudo-arquivos que apontam para um arquivo real. O conceito pode parecer um pouco estranho, a princípio, mas os links são úteis e muito utilizados no Linux.
+
+Existem dois tipos de links, os soft links e os hard links.
+
+### **Soft Links**
+
+Links simbólicos são atalhos que apontam para um arquivo. Um link simbólico pode apontar para um arquivo em qualquer lugar, seja na mesma partição, em outra ou até em locais remotos, como NFS, por exemplo.
+
+Por ser um arquivo, um link simbólico ocupa espaço em disco.
+
+Para identificar um link simbólico, pode-se executar o comando ls -l no diretório onde ele se encontra. Os links simbólicos são identificados pela letra "l" à esquerda da lista de permissões e não as contêm, na verdade. As permissões do arquivo real é que são utilizadas. Se o arquivo real for apagado, o link simbólico vira um "link morto" (dead link), ou seja, aponta para um local que não existe.
+
+Para criarmos um link simbólico devemos utilizar o comando ln, vamos a alguns exemplos.
+
+Vamos fazer um link do arquivo /etc/passwd para o /srv/passwd
+
+```bash
+root@flownerd:~# ln -s /etc/passwd /srv/passwd
+```
+
+Agora vamos listar o diretório /srv para checarmos o seu conteúdo
+
+```bash
+root@flownerd:~# ls -l /srv
+total 8
+drwxr-xr-x 2 root root 4096 set 14 13:47 flownerd
+-rw-r--r-- 1 root root    0 set 14 14:04 flownerd10.txt
+-rw-r--r-- 1 root root    0 set 14 13:56 flownerd1.txt
+-rw-r--r-- 1 root root    0 set 14 13:54 flownerd2.txt
+-rw-r--r-- 1 root root    0 set 14 13:53 flownerd.doc
+-rw-r--r-- 1 root root    0 set 14 13:40 flownerd.txt
+lrwxrwxrwx 1 root root   11 set 14 17:33 passwd -> /etc/passwd
+-rw-r--r-- 1 root root   60 set 14 13:56 resolv.conf
+-rw-r--r-- 1 root root    0 set 14 09:49 tocar.mp3
+```
+
+Note que o último arquivo tem uma flecha → apontando para o arquivo original que esta localizado em /etc/passwd, podemos notar também. que o caractere que identifica o arquivo é um l identificando que temos um link simbólico.
+
+Vamos listar outro link simbólico padrão do sistema Debian.
+
+```bash
+root@flownerd:~# ls -l /vmlinuz
+lrwxrwxrwx 1 root root 27 set 12 13:24 /vmlinuz -> boot/vmlinuz-5.10.0-8-amd64
+```
+
+Note que é um link simbólico apontando para a imagem do kernel no sistema.
+
+Em nosso sistema temos muitos links para facilitar o acesso a algumas informações.
+
+### **Hard Link**
+
+Hard links, na verdade, não são links, apenas nova referência ao arquivo armazenado no sistema de arquivos. As duas entradas contêm nomes diferentes, mas apontam para o mesmo local físico no disco (inode) compartilhando, portanto, além do mesmo conteúdo, os dois arquivos terão as mesmas permissões, ou seja, os dois arquivos são o mesmo, porém, com nomes diferente. Se o arquivo verdadeiro for apagado, o hard link continua apontando para o mesmo local físico sendo acessível da mesma forma.
+
+O hard link possui duas limitações. São elas:
+
+- O arquivo original e o hard link devem, obrigatoriamente, estar localizados no mesmo sistema de arquivos, já que o hard link aponta para um endereço físico (inode) e não se pode garantir que estes endereços sejam únicos em vários sistemas de arquivos. Imagine, por exemplo, um arquivo localizado no inode 50, no sistema de arquivos sda5. Não se pode garantir que em outro sistema de arquivos, sda8 por exemplo, não haja um outro arquivo com número de inode 50.
+- A outra limitação é que um hard link não pode apontar para um diretório. Hard links não ocupam espaço no sistema de arquivos.
+
+Vamos verificar como efetuamos a criação de um hard link, no exemplo abaixo.
+
+Primeiro vamos verificar o inode do arquivo /etc/passwd pois vamos criar um hard link dele
+
+```bash
+root@flownerd:~# ls -li /etc/passwd
+4895428 -rw-r--r--. 1 root root 1048 set 12 15:03 /etc/passwd
+```
+
+Note que o inode do nosso arquivo é 4895428, o nosso hard link vai ter que ter o mesmo inode. Vamos criar o nosso hard link
+
+```bash
+root@flownerd:~# ln /etc/passwd /passwd
+```
+
+Agora vamos listar o nosso hard link
+
+```bash
+root@flownerd:~# ls -li /passwd
+4895428 -rw-r--r-- 2 root root 1099 Jun 8 09:34 /passwd
+```
+
+Note que o nosso hard link tem o mesmo inode o arquivo original e o caractere identificar de arquivo continua o mesmo "-" .
+
+## **Documentação**
+
+Uma das características mais interessantes e importantes do Linux é a existência de grande quantidade de documentos que possibilitam ao usuário conhecer o sistema. Um fator importante no estudo do sistema é saber que tipo de documentos existem, além de conhecer as várias fontes de documentação disponíveis na Internet.
+
+### **O Comando man**
+
+Os manuais do Linux seguem determinados padrões e costumam ser armazenados no disco rígido, podendo ser acessados pelo comando man, que formata e permite a visualização das páginas do manual on-line. Esta versão reconhece as variáveis de ambiente MANPATH e (MAN)PAGER, o que possibilita a personalização do conjunto de páginas e até do formato das páginas. No caso de existir uma especificação de seção pelo usuário, será exibida apenas a página correspondente. Caso o nome contenha uma "barra" (/), então ele será testado como se fosse um nome de arquivo, podendo-se utilizar man ./cnc.5 ou mesmo man /cd/foo/bar.1.gz. O man tentará salvar as páginas do manual que tenham sido formatadas, buscando reduzir o tempo excluindo a formatação das páginas, na próxima vez que o comando for acionado.
+
+As páginas do manual-padrão do Linux estão disponíveis localmente no sistema, conforme relacionadas abaixo:
+
+- Comandos do usuário
+- Chamadas ao sistema
+- Bibliotecas de funções
+- Dispositivos
+- Formatos de arquivos
+- Jogos
+- Informações gerais
+- Administração do sistema
+
+Tradicionalmente, versões formatadas das páginas no diretório de origem especificado em /etc/man.config são salvas no arquivo específico, no diretório de destino também especificado por ele, mas outros mapeamentos dos diretórios contendo manuais podem ser especificados em /etc/man.config. Isto indica que, obviamente, nenhuma página formatada poderá ser salva no caso da inexistência de um diretório especificado por ele.
+
+Por exemplo para visualizarmos as páginas de manuais para o comando ls podemos executar o seguinte comando
+
+```bash
+root@flownerd:~# man ls
+```
+
+Para sair do manual basta pressionar a tecla q
+
+#### **Opções do comando man**
+
+| **_Parâmetro_** | **_Descrição_**                                                                                                                                                                                                                                           |
+| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _-C_            | _Especifica o arquivo de configuração de deve ser utilizado_                                                                                                                                                                                              |
+| _-f_            | _Pesquisa por uma determinada página de manual_                                                                                                                                                                                                           |
+| _-M_            | _Especifica a lista de diretórios a serem pesquisados na busca pelas páginas de manual, ignorando a variável de ambiente MANPATH._                                                                                                                        |
+| _-P paginador_  | _Especifica qual paginador será usado, ignorando o paginador-padrão._                                                                                                                                                                                     |
+| _-a_            | _Por padrão, o man encerrará após apresentar a primeira página de manual encontrada. Ao utilizar a opção -a_                                                                                                                                              |
+| _-c_            | _Reformata a página fonte de manual, mesmo existindo uma versão já formatada. Isso ajudará principalmente quando a página for formatada para uma tela com um número diferente de colunas ou se uma página pré-formatada estiver eventualmente corrompida_ |
+| _-m sistema_    | _Especifica um conjunto alternativo de páginas de manual a serem pesquisadas através do nome de sistema especificado._                                                                                                                                    |
+| _-W_            | _Lista apenas um nome de arquivo por linha, sem qualquer informação adicional. Esta opção é útil em comando do shell, tais como man -aW man xargs ls -l_                                                                                                  |
+
+Observe que a opção -c força a reformatação da página, mesmo que uma outra página recente esteja disponível. Conclui-se, então, que o man é uma ferramenta poderosa e expande as possibilidades do usuário de desenvolver sozinho suas pesquisas, bastando conhecer um mínimo de opções.
+
+### **O Comando whatis**
+
+O comando whatis procura por nome de páginas de manuais e mostra a página de manual e a sua descrição para cada combinação encontrada.
+
+```bash
+root@flownerd:~# whatis passwd
+passwd (5)           - arquivo de senhas
+passwd (1)           - change user password
+passwd (1ssl)        - compute password hashes
+```
+
+Note que tivemos o retorno de 3 páginas de manual com um número entre parênteses este número é a sessão do man, para chamar o manual para a ultima linha do nossa saída podemos executar o seguinte comando
+
+```bash
+root@flownerd:~# man 1ssl passwd
+```
+
+### **O Comando help e info**
+
+Os comando help e info são ferramentas auxiliares para pesquisas locais, sem a estrutura do comando man, mas bastante interessantes e com resultados satisfatórios em pesquisas mais manuais.
+
+O comando help mostra os comandos internos do shell bash. Para acessar os comandos do help e suas variáveis podemos digitar na linha de comando help como abaixo
+
+```bash
+root@flownerd:~# help
+```
+
+Temos da mesma forma o comando info que temos uma descri ação sobre os comandos que ele da suporte, o comando info é mais explicativo para chamarmos o info podemo digitar na linha de comando info como abaixo.
+
+```bash
+root@flownerd:~# info
+```
+
+### **As opções -h e --help dos comando**
+
+A maioria dos comando tem suporte as opção -h ou --help que traz um help rápido a respeito do nosso comando, vamos pegar o exemplo do comando rm.
+
+```bash
+root@flownerd:~# rm --help
+Uso: rm [OPÇÃO]... [ARQUIVO]...
+Remove (desvincula) o(s) ARQUIVO(s).
+
+  -f, --force           ignora arquivos e argumentos inexistentes,
+                          nunca questiona
+  -i                    questiona antes de cada remoção
+  -I                    questiona uma vez antes de remover mais que três
+                          arquivos ou ao remover recursivamente;
+                          menos intrusivo que -i, mas ainda oferecendo alguma
+                          proteção contra a maioria dos equívocos
+      --interactive[=QUANDO]
+[...]
+```
+
+Como podemos notar temos uma ajuda sobre como o comando funciona e suas opções.
+
+### **O comando apropos**
+
+O comando apropos faz uma pesquisa nas paginas de manuais pela palavra-chave que é passada para ele, o apropos pode pesquisar tanto por um comando como em sua descrição, vamos a um exemplo abaixo
+
+Vamos pesquisar pela palavra compiler
+
+```bash
+root@flownerd:~# apropos compiler
+tic (1)              - the terminfo entry-description compiler
+xsubpp (1)           - compiler to convert Perl XS code into C code
+zic (8)              - timezone compiler
+```
+
+Aqui temos o retorno de todos os comandos que tem referencias a palavra compiler, agora para chamar o manual basta digitar o man número da sessão e o comando exemplo.
+
+```bash
+root@flownerd:~# man 1 tic
+```
+
+### **Outras fontes de Documentação**
+
+Indiscutivelmente, a Internet foi e ainda é o principal meio de popularização e desenvolvimento do Linux, e é na Internet que os projetos, as informações e as atualizações estão disponíveis imediatamente à sua evolução. Um dos principais expoentes desta tendência é o LDP (Linux Documentation Project), projeto que trabalha em torno de um desenvolvimento de documentação de alta qualidade, com as características do conceito de software livre. A colaboração e a pesquisa no desenvolvimento e tradução de guias e HOWTOs, páginas dos manuais, etc., não só com o intuito de desenvolver o projeto, mas facilitar a sua disponibilização, faz com que a consulta dos vários temas relacionados possa se tornar cada vez mais dinâmica.
+
+### **Referências para Documentação na Internet**
+
+- Foca Linux: http://www.guiafoca.org/
+- BR-Linux: http://www.br-linux.org/
+- Dicas-L: http://www.dicas-l.com.br/
+- Linux Documentation Project: http://tldp.org/
+- Viva o Linux: http://www.vivaolinux.com.br
+- Wiki do Kernel: https://www.wiki.kernel.org/
