@@ -435,31 +435,40 @@ No link [http://distrowatch.com](http://distrowatch.com/), você poderá consult
 
 # **Dispositivos no Linux**
 
-Os dispositivos são uma coisa que temos que conhecer no Linux, senão se perdemos aos poucos nas configurações mais básicas.
+Os dispositivos são algo que temos que conhecer no Linux, senão se perdemos aos poucos nas configurações mais básicas.
 
 ## **O que são dispositivos?**
 
-Um dispositivo é todo o componente de hardware, e do sistema operacional. Um dispositivo é “algo especial” que é compartilhado com o Kernel, ou seja, um exemplo de dispositivo são as impressoras, CD-ROMs, modems, portas, mouse, HDs, etc. No Linux, os dispositivos físicos são tratados como arquivos. Estes arquivos são um tipo especial no sistema de arquivos e se encontram no diretório /dev. Se você der um ls neste diretório, verá que existe um muitos arquivos. Cada arquivo neste diretório corresponderá a um dispositivo de acordo com o seu tipo.
+Um dispositivo é todo o componente de hardware, e do sistema operacional. Um dispositivo é "algo especial" que é compartilhado com o Kernel, ou seja, um exemplo de dispositivo são as impressoras, CD-ROMs, modems, portas, mouse, HDs, etc. No Linux, os dispositivos físicos são tratados como arquivos. Estes arquivos são um tipo especial no sistema de arquivos e se encontram no diretório /dev. Se você executar um ls neste diretório, verá que existe um muitos arquivos. Cada arquivo neste diretório corresponderá a um dispositivo de acordo com o seu tipo.
 
 Se você usava DOS/Windows antes, você acessava o drive C:, lembra? No Linux não existe isso! Vai ser um dispositivo no lugar. Você vai usar isso o tempo todo, porque vamos mexer com mouse, com impressora, IDE’s, SCSI’s, etc. Então aqui temos alguns arquivos do /dev e seus respectivos dispositivos:
 
-### **/dev/hdXX**
+### **/dev/hdXX ou /dev/sdXX**
 
 Aqui é correspondente às Interfaces IDEs, ou seja, tudo que tiver conectado nos cabos IDEs. Exemplos, podemos citar HD’s e CD-ROM’s. O xx significa qual IDE, onde o primeiro x corresponde a qual IDE, e o segundo x (opcional) corresponde a partição. Veja a tabela à seguir:
 
-| **_Dispositivo_** | **_Descrição_**                     |
-| :---------------- | :---------------------------------- |
-| _/dev/hda_        | _IDE Primária Master_               |
-| _/dev/hda1_       | _Partição 1 da IDE Primária Master_ |
-| _/dev/hda2_       | _Partição 2 da IDE Primária Master_ |
-| _/dev/hdb_        | _IDE Primária Slave_                |
-| _/dev/hdb1_       | _Partição 1 da IDE Primária Slave_  |
-| _/dev/hdb2_       | _Partição 2 da IDE Primária Slave_  |
-| _/dev/hdc_        | _IDE Secundária Master_             |
-| _/dev/hdc1_       | _Partição 1 da IDE Master_          |
-| _/dev/hdc2_       | _Partição 2 da IDE Master_          |
+| **_Dispositivo_** | **_Descrição_**                      |
+| :---------------- | :----------------------------------- |
+| _/dev/hda_        | _IDE Primária Master_                |
+| _/dev/hda1_       | _Partição 1 da IDE Primária Master_  |
+| _/dev/hda2_       | _Partição 2 da IDE Primária Master_  |
+| _/dev/hdb_        | _IDE Primária Slave_                 |
+| _/dev/hdb1_       | _Partição 1 da IDE Primária Slave_   |
+| _/dev/hdb2_       | _Partição 2 da IDE Primária Slave_   |
+| _/dev/hdc_        | _IDE Secundária Master_              |
+| _/dev/hdc1_       | _Partição 1 da IDE Master_           |
+| _/dev/hdc2_       | _Partição 2 da IDE Master_           |
+| _/dev/sda_        | _SATA Master_                        |
+| _/dev/sda1_       | _Partição 1 da SATA Primária Master_ |
+| _/dev/sda2_       | _Partição 2 da SATA Primária Master_ |
+| _/dev/sdb_        | _SATA Primária Slave_                |
+| _/dev/sdb1_       | _Partição 1 da SATA Primária Slave_  |
+| _/dev/sdb2_       | _Partição 2 da SATA Primária Slave_  |
+| _/dev/sdc_        | _SATA Secundária Master_             |
+| _/dev/sdc1_       | _Partição 1 da SATA Master_          |
+| _/dev/sdc2_       | _Partição 2 da SATA Master_          |
 
-Perceba aqui que cada hdx vai até os números 2, mas não é apenas até o 2, pode ir mais longe. Dependendo de quantas partições tiver o seu HD, pode ser 3, ou 4, ou 9 por exemplo.
+Perceba aqui que cada hdx or sdx vai até os números 2, mas não é apenas até o 2, pode ir mais longe. Dependendo de quantas partições tiver o seu HD, pode ser 3, ou 4, ou 9 por exemplo.
 
 ### **/dev/fdX**
 
