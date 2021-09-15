@@ -1795,7 +1795,7 @@ root@flownerd:~# find [diretório de pesquisa] [parametros] [arquivos]
 | _-readable_        | _Pesquisa arquivos que podem ser lidos._                                                                                                                                                                                                                                                                                                                                                                     |
 | _-regex pattern_   | _Pesquisa arquivos que casam com a expressão regular._                                                                                                                                                                                                                                                                                                                                                       |
 | _-size n [cwbkMG]_ | <p>_Pesquisa por arquivos que usem n unidades de espaço em disco. Os sufixos utilizados são._</p><p>_b – para blocos de 512-bytes é o padrão utilizado_</p><p>_c – para bytes_</p><p>_w – para words de dois bytes_</p><p>_k - para kilobytes (unidade de 1024 bytes)_</p><p>_M – para Megabytes (unidades de 1048576 bytes)_</p><p>_G – para Gigabytes (unidades de 1073741824 bytes)_</p>                  |
-| _- type t_         | <p>_Pesquisa arquivos pelo seu tipo o t pode ser:_</p><p>_b – dispositivo de bloco_</p><p>_c – dispositivo de caractere_</p><p>_d – diretório_</p><p>_p – pipe_</p><p>_f – arquivo regular_</p><p>_l – link simbólico_</p><p>_s – socket_</p>                                                                                                                                                                |
+| _-type t_          | <p>_Pesquisa arquivos pelo seu tipo o t pode ser:_</p><p>_b – dispositivo de bloco_</p><p>_c – dispositivo de caractere_</p><p>_d – diretório_</p><p>_p – pipe_</p><p>_f – arquivo regular_</p><p>_l – link simbólico_</p><p>_s – socket_</p>                                                                                                                                                                |
 | _-uid n_           | _Pesquisa arquivos que o seu uid é n_                                                                                                                                                                                                                                                                                                                                                                        |
 | _-user uname_      | _Pesquisa arquivos que o dono seja uname (podemos utilizar uid aqui também. invés do nome)_                                                                                                                                                                                                                                                                                                                  |
 | _-writable_        | _Pesquisa por arquivos que podem ser escritos_                                                                                                                                                                                                                                                                                                                                                               |
@@ -1947,4 +1947,512 @@ root@flownerd:~# locate -i X11 -l 10
 /usr/lib/x86_64-linux-gnu/libX11.so.6
 /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
 /usr/share/X11
+```
+
+## **Visualizando e manipulando arquivos**
+
+### **O comando cat**
+
+Utilizamos o comando cat para concatenar ou visualizar o conteúdo de arquivos.
+
+#### **Opções do comando cat**
+
+| **_Parâmetro_** | **_Descrição_**                                  |
+| :-------------- | :----------------------------------------------- |
+| _-A_            | _Equivalente a -vET_                             |
+| _-b_            | _Numera a saída das linhas que não estão vazias_ |
+| _-e_            | _Equivalente a -vE_                              |
+| _-E_            | _Mostra $ no final de cada linha_                |
+| _-n_            | _Numera as todas as linhas de saída do arquivo_  |
+| _-s_            | _Suprime a saída de linhas vazias repetidas_     |
+| _-t_            | _Equivalente a -vT_                              |
+| _-T_            | _Mostra TAB como um caractere ^I_                |
+| _-v_            | _Usa a notação -M e ^, exceto para LFD e TAB_    |
+
+Vamos visualizar o arquivo /etc/motd com o comando cat
+
+```bash
+root@flownerd:~# cat /etc/motd
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+```
+
+Como podemos notar se não passarmos nenhum parâmetro para o cat ele vai nos retornar o conteúdo do arquivo em alguns casos precisamos numerar a saída e podemos utilizar a opção -b para numerar as linhas que não estão em branco ou -n para numerar todas as linhas até as em branco.
+
+```bash
+root@flownerd:~# cat -b /etc/motd
+
+     1  The programs included with the Debian GNU/Linux system are free software;
+     2  the exact distribution terms for each program are described in the
+     3  individual files in /usr/share/doc/*/copyright.
+
+     4  Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+     5  permitted by applicable law.
+```
+
+### **O comando tac**
+
+O comando tac tem a mesma função do cat porém em forma inversa, ou seja imprime o arquivo de baixo para cima.
+
+Vamos testar o tac no mesmo arquivo que testamos com o cat
+
+```bash
+root@flownerd:~# tac /etc/motd
+permitted by applicable law.
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+
+individual files in /usr/share/doc/*/copyright.
+the exact distribution terms for each program are described in the
+The programs included with the Debian GNU/Linux system are free software;
+```
+
+### **O comando zcat**
+
+O comando zcat é utilizado para visualizar dados compactados em formato gzip sem precisar descompactá-los.
+
+Vamos testar o zcat em um arquivo compactado no formato gz.
+
+```bash
+root@flownerd:~# zcat /usr/share/doc/apt/NEWS.Debian.gz
+apt (2.1.16) unstable; urgency=medium
+
+  Automatically remove unused kernels on apt {dist,full}-upgrade. To revert
+  to previous behavior, set APT::Get::AutomaticRemove::Kernels to false or
+  pass --no-auto-remove to the command. apt-get remains unchanged.
+
+  Packages files can now set the Phased-Update-Percentage field to restrict
+  update rollout to a specified percentage of machines. Previously, this has
+  only been available to users of Ubuntu's update-manager tool. See
+  apt_preferences(5) for details and how to configure multiple systems to get
+  the same updates. Phased updates are disabled in chroots for now to not
+  break buildd-style setups.
+[...]
+```
+
+### **O comando bzcat**
+
+O comando bzcat é utilizado para visualizar dados compactados em formato bzip2 sem precisar descompactá-los.
+
+Vamos testar o bzcat em um arquivo compactado no formato bz2.
+
+```bash
+root@flownerd:~# tar -cjf passwd.tar.bz2 /etc/passwd 2> /dev/null
+root@flownerd:~# bzcat passwd.tar.bz2
+```
+
+### **O comando xzcat**
+
+O comando xzcat é utilizado para visualizar dados compactados em formato xz sem precisar descompactá-los.
+
+Vamos testar o xzcat em um arquivo compactado no formato xz.
+
+```bash
+root@flownerd:~# tar -cJf interfaces.tar.xz /etc/network/interfaces 2> /dev/null
+root@flownerd:~# xzcat interfaces.tar.xz
+```
+
+### **O comando head**
+
+O comando head lista as 10 primeiras linhas de um arquivo informado.
+
+#### **Parâmetros do comando head**
+
+| **_Parâmetro_** | **_Descrição_**                                 |
+| :-------------- | :---------------------------------------------- |
+| _-n n_          | _Lista as n primeiras linhas do arquivo_        |
+| _-q_            | _Nunca imprime o nome do arquivo no cabeçalho_  |
+| _-v_            | _Sempre imprime o nome do arquivo no cabeçalho_ |
+
+Vamos listar as 10 primeiras linhas do arquivo /etc/passwd com o comando head
+
+```bash
+root@flownerd:~# head /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+```
+
+Como são somente as 10 primeiras linhas do arquivo não precisamos especificar parametros, porém agora vamos listar as 15 primeiras linhas do arquivo /etc/inittab e vamos listar o nome do arquivo no cabeçalho.
+
+```bash
+root@flownerd:~# head -n 15 -v /etc/nsswitch.conf
+==> /etc/nsswitch.conf <==
+# /etc/nsswitch.conf
+#
+# Example configuration of GNU Name Service Switch functionality.
+# If you have the `glibc-doc-reference' and `info' packages installed, try:
+# `info libc "Name Service Switch"' for information about this file.
+
+passwd:         files systemd
+group:          files systemd
+shadow:         files
+gshadow:        files
+
+hosts:          files dns
+networks:       files
+
+protocols:      db files
+```
+
+### **O comando tail**
+
+O comando tail lista as 10 últimas linhas de um arquivo informado.
+
+#### **Parâmetros do comando tail**
+
+| **_Parâmetro_** | **_Descrição_**                                                     |
+| :-------------- | :------------------------------------------------------------------ |
+| _-n n_          | _Lista as n primeiras linhas do arquivo_                            |
+| _-q_            | _Nunca imprime o nome do arquivo no cabeçalho_                      |
+| _-v_            | _Sempre imprime o nome do arquivo no cabeçalho_                     |
+| _-f_            | _Fica visualizando o arquivo em tempo esperando por novas entradas_ |
+
+Vamos listar as 10 últimas linhas do arquivo /etc/passwd com o comando tail
+
+```bash
+root@flownerd:~# tail /etc/passwd
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+avahi-autoipd:x:105:113:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/usr/sbin/nologin
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+douglas:x:1000:1000:Douglas,,,:/home/douglas:/bin/bash
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+```
+
+Como são somente as 10 últimas linhas do arquivo não precisamos especificar parametros, porém agora vamos listar as 15 últimas linhas do arquivo /etc/inittab e vamos listar o nome do arquivo no cabeçalho.
+
+```bash
+root@flownerd:~# tail -n 15 -v /etc/services
+==> /etc/services <==
+amandaidx       10082/tcp                       # amanda backup services
+amidxtape       10083/tcp                       # amanda backup services
+sgi-cmsd        17001/udp               # Cluster membership services daemon
+sgi-crsd        17002/udp
+sgi-gcd         17003/udp                       # SGI Group membership daemon
+sgi-cad         17004/tcp                       # Cluster Admin daemon
+binkp           24554/tcp                       # binkp fidonet protocol
+asp             27374/tcp                       # Address Search Protocol
+asp             27374/udp
+csync2          30865/tcp                       # cluster synchronization tool
+dircproxy       57000/tcp                       # Detachable IRC Proxy
+tfido           60177/tcp                       # fidonet EMSI over telnet
+fido            60179/tcp                       # fidonet EMSI over TCP
+
+# Local services
+```
+
+### **O comando nl**
+
+O comando nl lista um arquivo passado como parâmetro e numera as linhas como o comando cat com a opção de -n.
+
+Vamos listar o arquivo /etc/passwd com o nl
+
+```bash
+root@flownerd:~# nl /etc/passwd
+     1  root:x:0:0:root:/root:/bin/bash
+     2  daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+     3  bin:x:2:2:bin:/bin:/usr/sbin/nologin
+     4  sys:x:3:3:sys:/dev:/usr/sbin/nologin
+     5  sync:x:4:65534:sync:/bin:/bin/sync
+     6  games:x:5:60:games:/usr/games:/usr/sbin/nologin
+     7  man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+     8  lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+     9  mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+    10  news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+    11  uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+    12  proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+    13  www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+    14  backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+    15  list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+    16  irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+    17  gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+    18  nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+    19  _apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+    20  systemd-timesync:x:101:101:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+    21  systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+    22  systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+    23  messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+    24  avahi-autoipd:x:105:113:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/usr/sbin/nologin
+    25  sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+    26  douglas:x:1000:1000:Douglas,,,:/home/douglas:/bin/bash
+    27  systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+```
+
+### **O comando more**
+
+O comando more é usado quando se quer, paginar a saída de de um arquivo que vai ser mais do que uma página inteira ou a saída de um comando que vai ser muito longo. Temo que considerar que o more só página para frente ou seja depois que paginou para baixo não podemos voltar.
+
+Vamos testar o more com uma pesquisa
+
+```bash
+root@flownerd:~# find /etc -iname "*.conf" | more
+```
+
+Caso se tenha um arquivo muito grande que queira visualizar podemos chamar direto o more para visualizá-lo como o comando cat, como no exemplo abaixo:
+
+```bash
+root@flownerd:~# more /etc/services
+```
+
+### **O comando zmore**
+
+O comando zmore funciona como o more porém é utilizado para visualiar arquivos compactados no formato gzip
+
+```bash
+root@flownerd:~# zmore /usr/share/doc/tar/NEWS.gz
+```
+
+### **O comando bzmore**
+
+O comando bzmore funciona como o more porém é utilizado para visualiar arquivos compactados no formato bzip2
+
+```bash
+root@flownerd:~# bzmore /root/passwd.tar.bz2
+```
+
+### **O comando xzmore**
+
+O comando xzmore funciona como o more porém é utilizado para visualiar arquivos compactados no formato xz.
+
+```bash
+root@flownerd:~# xzmore /root/interfaces.tar.xz
+```
+
+### **O comando less**
+
+O comando less é usado quando se quer, paginar a saída de de um arquivo que vai ser mais do que uma página inteira ou a saída de um comando que vai ser muito longo. Diferente do more o less nós conseguimos paginar tanto para baixo como para cima o arquivo.
+
+Vamos testar o more com uma pesquisa
+
+```bash
+root@flownerd:~# find /etc -iname "*.conf" | less
+```
+
+Caso se tenha um arquivo muito grande que queira visualizar podemos chamar direto o less para visualizá-lo como o comando cat, como no exemplo abaixo:
+
+```bash
+root@flownerd:~# less /etc/services
+```
+
+### **O comando zless**
+
+O comando zless funciona como o less porém é utilizado para visualiar arquivos compactados no formato gzip
+
+```bash
+root@flownerd:~# zless /usr/share/doc/tar/NEWS.gz
+```
+
+### **O comando bzless**
+
+O comando bzless funciona como o less porém é utilizado para visualiar arquivos compactados no formato bzip2
+
+```bash
+root@flownerd:~# bzless /root/passwd.tar.bz2
+```
+
+### **O comando xzless**
+
+O comando xzless funciona como o less porém é utilizado para visualiar arquivos compactados no formato xz
+
+```bash
+root@flownerd:~# xzless /root/interfaces.tar.xz
+```
+
+### **O comando dos2unix**
+
+O comando dos2unix converte um arquivo texto do formato MS-DOS para o formato Unix que em alguns casos podem dar muita dor de cabeça para um administrador Linux a diferença na terminação da linha
+
+Para utilizar este comando basta passar para o comando o arquivo que deseja converter.
+
+```bash
+root@flownerd:~# dos2unix arquivo.txt
+```
+
+### **O comando unix2dos**
+
+O comando unix2dos converte um arquivo texto do formato Unix para o formato MS-DOS
+
+Para utilizar este comando basta passar para o comando o arquivo que deseja converter.
+
+```bash
+root@flownerd:~# unix2dos arquivo.txt
+```
+
+### **O comando expand**
+
+O comando expand é utilizado para substituir tabulações por espaços, aceitando arquivos na linha de comando ou texto na entrada padrão. Por padrão, coloca-se o resultado na saída padrão.
+
+#### **Parâmetros do comando expand**
+
+| **_Parâmetro_** | **_Descrição_**                                                             |
+| :-------------- | :-------------------------------------------------------------------------- |
+| _-t n_          | _Substitui as ocorrências de tabulação do texto por n caracteres em branco_ |
+| _-i_            | _Substitui somente as ocorrências de tabulação no início da linha_          |
+
+Vamos pegar o exemplo de um arquivo qualquer
+
+```bash
+root@flownerd:~# cat /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet static
+        address 192.168.0.10/24
+        gateway 192.168.0.1
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 8.8.8.8 8.8.4.4
+        dns-search flownerd.local
+```
+
+Vamos validar se o arquivo esta com tabs
+
+```bash
+root@flownerd:~# cat -T /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet static
+^Iaddress 192.168.0.10/24
+^Igateway 192.168.0.1
+^I# dns-* options are implemented by the resolvconf package, if installed
+^Idns-nameservers 8.8.8.8 8.8.4.4
+^Idns-search flownerd.local
+```
+
+Agora vamos utilizar o expand para trocar as tabulações por espaços
+
+```bash
+root@flownerd:~# expand -t 1 /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet static
+ address 192.168.0.10/24
+ gateway 192.168.0.1
+ # dns-* options are implemented by the resolvconf package, if installed
+ dns-nameservers 8.8.8.8 8.8.4.4
+ dns-search flownerd.local
+```
+
+Agora se validarmos a saida do comando com o cat
+
+```bash
+root@flownerd:~# expand -t 1 /etc/network/interfaces | cat -A
+# This file describes the network interfaces available on your system$
+# and how to activate them. For more information, see interfaces(5).$
+$
+source /etc/network/interfaces.d/*$
+$
+# The loopback network interface$
+auto lo$
+iface lo inet loopback$
+$
+# The primary network interface$
+allow-hotplug enp0s3$
+iface enp0s3 inet static$
+ address 192.168.0.10/24$
+ gateway 192.168.0.1$
+ # dns-* options are implemented by the resolvconf package, if installed$
+ dns-nameservers 8.8.8.8 8.8.4.4$
+ dns-search flownerd.local$
+```
+
+### **O comando unexpand**
+
+O comando unexpand é utilizado para substituir espaços por tabulações no começo da linha, aceitando arquivos na linha de comando ou texto na entrada padrão. Por padrão, coloca-se o resultado na saída padrão.
+
+#### **Parâmetros do comando unexpand**
+
+| **_Parâm._** | **_Descrição_**                                                             |
+| :----------- | :-------------------------------------------------------------------------- |
+| _-t n_       | _Substitui as ocorrências de tabulação do texto por n caracteres em branco_ |
+| _-a_         | _Substitui somente as ocorrências de tabulação no início da linha_          |
+
+Vamos pegar o exemplo de um arquivo qualquer
+
+```bash
+root@flownerd:~# head /etc/ssh/sshd_config
+#       $OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+```
+
+Agora vamos utilizar o expand para trocar as tabulações por espaços
+
+```bash
+root@flownerd:~#  head /etc/ssh/sshd_config | unexpand -t 1
+#       $OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+# This is the sshd server system-wide configuration file.               See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.           Uncommented options override the
+```
+
+### **O comando rev**
+
+O comando rev inverte as linhas como se fosse um espelho
+
+Vamos verificar um exemplo do rev no arquivo /etc/motd
+
+```bash
+root@flownerd:~# rev /etc/motd
+
+;erawtfos eerf era metsys xuniL/UNG naibeD eht htiw dedulcni smargorp ehT
+eht ni debircsed era margorp hcae rof smret noitubirtsid tcaxe eht
+.thgirypoc/*/cod/erahs/rsu/ ni selif laudividni
+
+tnetxe eht ot ,YTNARRAW ON YLETULOSBA htiw semoc xuniL/UNG naibeD
+.wal elbacilppa yb dettimrep
 ```
