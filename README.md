@@ -1753,3 +1753,198 @@ Indiscutivelmente, a Internet foi e ainda é o principal meio de popularização
 - Linux Documentation Project: http://tldp.org/
 - Viva o Linux: http://www.vivaolinux.com.br
 - Wiki do Kernel: https://www.wiki.kernel.org/
+
+## **Localizando arquivos**
+
+### **O comando find**
+
+O comando find pesquisa a árvore de diretórios com raiz dada pelo nome do arquivo fornecido para avaliação, através de uma expressão avaliada da esquerda para a direita, de acordo com as regras de precedência até que o resultado seja conhecido e, neste ponto, o find vai para o próximo nome de arquivo.
+
+**_Sintaxe:_**
+
+```bash
+root@flownerd:~# find [diretório de pesquisa] [parametros] [arquivos]
+```
+
+#### **Parâmetros do Comando find**
+
+| _Parâmetro_        | _Descrição_                                                                                                                                           |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _-maxdepth levels_ | _Aqui nos limitamos a nossa pesquisa a quantidade máxima de níveis de diretórios que vamos efetuar a pesquisa._                                       |
+| _-noleaf_          | _Não utiliza otimização na pesquisa, está opção é necessário quando efetuamos pesquisas em CD/DVD ou pesquisas em sistemas de arquivos MS-DOS ou AFS_ |
+| _-regextype type_  | _Utiliza uma expressão regular para efetuar a pesquisa_                                                                                               |
+| _-xdev_            | _Não efetua pesquisa em outros sistemas de arquivos._                                                                                                 |
+
+| _-amin n_          | _Pesquisa arquivos que foram acessados nos n últimos minutos atras._                                                                                                                                                                                                                                                                                                                                         |
+| :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _-atime n_         | _Pesquisa arquivos que foram acessados nas últimas n\*24 horas atras. Por exemplo se especificar uma pesquisa utilizando -atime +1 vamos procurar arquivos que foram acessados pelo menos 2 dias atras._                                                                                                                                                                                                     |
+| _-cmin n_          | _Pesquisa arquivos que o status do arquivo foi modificado nos últimos n minutos atras._                                                                                                                                                                                                                                                                                                                      |
+| _-ctime n_         | _Pesquisa arquivos que o status do arquivo foi modificado nas últimas n horas atras._                                                                                                                                                                                                                                                                                                                        |
+| _-empty_           | _Pesquisa arquivos que estão vazios ou são um arquivos regulares ou um diretórios._                                                                                                                                                                                                                                                                                                                          |
+| _-executable_      | _Pesquisa arquivos executáveis e diretórios que podem ser pesquisados._                                                                                                                                                                                                                                                                                                                                      |
+| _-gid n_           | _Pesquisa arquivos que o gid é n_                                                                                                                                                                                                                                                                                                                                                                            |
+| _-group gname_     | _Pesquisa arquivos que pertencem ao grupo gname_                                                                                                                                                                                                                                                                                                                                                             |
+| _-iname pattern_   | _Efetua a pesquisa por pattern porem não diferencia maiúsculas e minusculas._                                                                                                                                                                                                                                                                                                                                |
+| _-inum n_          | _Pesquisa por arquivos que tenham o inode n_                                                                                                                                                                                                                                                                                                                                                                 |
+| _-mmin n_          | _Pesquisa arquivos que foram modificado nos n últimos minutos atras._                                                                                                                                                                                                                                                                                                                                        |
+| _-mtime n_         | _Pesquisa arquivos que foram modificados nas n últimas horas atras._                                                                                                                                                                                                                                                                                                                                         |
+| _-name pattern_    | _Pesquisa arquivos baseados no padrão informado, Os metacaracteres ('\*', '?' e '[]') podem ser utilizados._                                                                                                                                                                                                                                                                                                 |
+| _-nogroup gid_     | _Pesquisa arquivos que não tenham o gid informado_                                                                                                                                                                                                                                                                                                                                                           |
+| _-nouser uid_      | _Pesquisa arquivos que não tenham o uid informado._                                                                                                                                                                                                                                                                                                                                                          |
+| _-perm mode_       | _Pesquisa arquivos pelos exatos bits de permissões pode ser (octal ou simbólico). Ex: -perm g=w aqui vamos pesquisar pela permissão 0020. Aqui é considerado a permissão somente escrita para o grupo não considerando as outras permissões, se desejar pesquisar por exemplo: -perm -g=w aqui estamos pesquisando arquivos cuja a permissão do grupo é escrita não se importando com as outras permissões._ |
+| _-readable_        | _Pesquisa arquivos que podem ser lidos._                                                                                                                                                                                                                                                                                                                                                                     |
+| _-regex pattern_   | _Pesquisa arquivos que casam com a expressão regular._                                                                                                                                                                                                                                                                                                                                                       |
+| _-size n [cwbkMG]_ | <p>_Pesquisa por arquivos que usem n unidades de espaço em disco. Os sufixos utilizados são._</p><p>_b – para blocos de 512-bytes é o padrão utilizado_</p><p>_c – para bytes_</p><p>_w – para words de dois bytes_</p><p>_k - para kilobytes (unidade de 1024 bytes)_</p><p>_M – para Megabytes (unidades de 1048576 bytes)_</p><p>_G – para Gigabytes (unidades de 1073741824 bytes)_</p>                  |
+| _- type t_         | <p>_Pesquisa arquivos pelo seu tipo o t pode ser:_</p><p>_b – dispositivo de bloco_</p><p>_c – dispositivo de caractere_</p><p>_d – diretório_</p><p>_p – pipe_</p><p>_f – arquivo regular_</p><p>_l – link simbólico_</p><p>_s – socket_</p>                                                                                                                                                                |
+| _-uid n_           | _Pesquisa arquivos que o seu uid é n_                                                                                                                                                                                                                                                                                                                                                                        |
+| _-user uname_      | _Pesquisa arquivos que o dono seja uname (podemos utilizar uid aqui também. invés do nome)_                                                                                                                                                                                                                                                                                                                  |
+| _-writable_        | _Pesquisa por arquivos que podem ser escritos_                                                                                                                                                                                                                                                                                                                                                               |
+| _-exec command_    | _Executa um comando caso a pesquisa retorne true._                                                                                                                                                                                                                                                                                                                                                           |
+
+#### **Exemplos do uso do find.**
+
+Vamos efetuar uma pesquisa do diretório /srv pesquisando por aquivos que no nome contenham teste
+
+```bash
+root@flownerd:~# find /srv -name "teste*"
+```
+
+Vamos efetuar uma pesquisa do diretório /usr e vamos pesquisar por arquivos .html que geralmente são documentações, porém vamos utilizar o -iname não não se preocuparmos se estão em caixa alta ou não.
+
+```bash
+root@flownerd:~# find /usr -iname "*.HtmL"
+```
+
+Agora vamos fazer uma pesquisa do diretório /tmp por arquivos com o nome de core e que sejam do tipo arquivo regular e vamos exclui-los caso encontremos algum.
+
+```bash
+root@flownerd:~# find /tmp -iname core -type f -print | xargs /bin/rm -f
+```
+
+Agora vamos pesquisar no diretório /home arquivos do tipo regular e vamos executar o comando file para cada arquivo encontrado.
+
+```bash
+root@flownerd:~# find /home -type f -exec file '{}' \;
+```
+
+Opção utilizando xargs
+
+```bash
+root@flownerd:~# find /home -type f | xargs file
+```
+
+Vamos fazer uma pesquisa diretório home do usuário flownerd e vamos verificar quais arquivos foram modificados nas últimas 24 horas.
+
+```bash
+root@flownerd:~# find /home/flownerd -mtime 0
+```
+
+Vamos efetuar uma pesquisa nos diretório /sbin e /usr/sbin por arquivos que tenham permissão de execução porém não tenha a permissão de leitura.
+
+```bash
+root@flownerd:~# find /sbin /usr/sbin -executable ! -readable -print
+```
+
+Agora vamos efetuar uma pesquisa por arquivos que tenham permissão de escrita para o dono e o grupo dono do arquivo e permissão de leitura para outros no diretório /etc
+
+```bash
+root@flownerd:~# find /etc -perm 664
+```
+
+### **O comando whereis**
+
+O comando whereis pesquisa o fontes/binários e seções de manuais para os arquivos especificados na pesquisa
+
+#### **Opções do comando whereis**
+
+| **_Parâmetro_** | **_Descrição_**                                                                                                                                                                                             |
+| :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _-b_            | _Pesquisa por arquivos binários_                                                                                                                                                                            |
+| _-m_            | _Pesquisa por seções nos manuais_                                                                                                                                                                           |
+| _-s_            | _Pesquisa por arquivos fontes._                                                                                                                                                                             |
+| _-u_            | _Pesquisa por entradas não usuais. Um arquivo não usual pode ser uma entrada que não foi requisitada. Desta maneira whereis -m -u \* pesquisa por arquivos no diretório corrente que não tem documentações_ |
+| _-B_            | _Altera ou caso contrário limita os lugares onde o whereis vai pesquisar por binários._                                                                                                                     |
+| _-M_            | _Altera ou caso contrário limita os lugares onde o whereis vai pesquisar por seções do manual_                                                                                                              |
+| _-S_            | _Altera ou caso contrário limita os lugares onde o whereis vai pesquisar por código fonte._                                                                                                                 |
+
+Vamos pesquisar informações sobre o comando find
+
+```bash
+root@flownerd:~# whereis find
+find: /usr/bin/find /usr/share/man/man1/find.1.gz /usr/share/info/find.info-1.gz /usr/share/info/find.info.gz /usr/share/info/find.info-2.gz
+```
+
+Agora vamos procurar somente informações sobre as seções do manual para o find.
+
+```bash
+root@flownerd:~# whereis -m find
+find: /usr/share/man/man1/find.1.gz /usr/share/info/find.info-1.gz /usr/share/info/find.info.gz /usr/share/info/find.info-2.gz
+```
+
+### **O comando which**
+
+O comando which retorna a caminho completo de um arquivo executável que está na PATH.
+
+Vamos pesquisar o caminho completo do comando man
+
+```bash
+root@flownerd:~# which man
+/usr/bin/man
+```
+
+### **Os comando updatedb e locate**
+
+O comando updatedb atualiza ou cria um banco de dados usado pelo para efetuar pesquisa pelo comando locate. Este arquivo contem uma lista de entradas que podem ser arvores de diretórios que foram atualizadas pelo sistema, diferente do find que pesquisa em tempo real o locate vai pesquisar na base de dados que foi gerada pelo updatedb ou seja se ouve alguma alteração do sistema de arquivos a pesquisa com o locate ainda não vai poder pesquisar esta alteração enquanto o updatedb não atualizar o seu banco.
+
+Para gerarmos uma base de dados com o updatedb podemos utilizar o comando abaixo.
+
+```bash
+root@flownerd:~# updatedb
+```
+
+Podemos utilizar a opção --output=dbfile onde o dbfile é o caminho que podemos armazenar o nosso banco de dados, o padrão é /var/cache/locate/locatedb.
+
+#### **Opções do comando locate**
+
+| **_Parâmetro_** | **_Descrição_**                                                                                                                              |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| _-b_            | _Pesquisa pelo padrão informado_                                                                                                             |
+| _-c_            | _Ao invés de mostrar o resultado da pesquisa vai retornar o numero de combinações encontradas_                                               |
+| _-d_            | _Especifica o caminho para o banco de dados do updatedb caso esteja em outro lugar caso tenha utilizar o --output=dbfile no comando updatdb_ |
+| _-e_            | _Mostra somente as entradas que se referem a arquivos existentes quando o comando locate foi executado._                                     |
+| _-i_            | _Não diferencia maiúsculas e minusculas._                                                                                                    |
+| _-l_            | _Limita a quantidade de resultados retornados pelo comando locate._                                                                          |
+| _-S_            | _Mostra as estatísticas sobre cada entrada lida da base de dados._                                                                           |
+
+Vamos verificar as estáticas da nossa base de dados
+
+```bash
+root@flownerd:~# locate -S
+O banco de dados /var/cache/locate/locatedb está no formato GNU LOCATE02.
+Banco de dados teve sua última alteração em 2021:09:14 21:37:56.171652706 -0300
+Tamanho do banco de dados do locate: 351529 bytes
+Todos os nomes de arquivos: 34293
+Nomes de arquivos devem ter um comprimento cumulativo de 1462209 bytes.
+Destes nomes de arquivos,
+
+        0 contém espaço em branco,
+        0 contém caracteres de nova linha,
+        e 2 contém caracteres com o bit alto definido.
+Taxa de compressão 75,96% (maior é melhor)
+```
+
+Vamos efetuar uma pesquisa pelo X11, porém vamos se importar se estão em caixa alta ou não e vamos limitar a nossa saída a 10.
+
+```bash
+root@flownerd:~# locate -i X11 -l 10
+/etc/X11
+/etc/X11/xkb
+/usr/lib/modules/5.10.0-8-amd64/kernel/drivers/hwmon/max1111.ko
+/usr/lib/modules/5.10.0-8-amd64/kernel/drivers/iio/adc/max11100.ko
+/usr/lib/modules/5.10.0-8-amd64/kernel/drivers/iio/adc/max1118.ko
+/usr/lib/systemd/system/x11-common.service
+/usr/lib/tmpfiles.d/x11.conf
+/usr/lib/x86_64-linux-gnu/libX11.so.6
+/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
+/usr/share/X11
+```
