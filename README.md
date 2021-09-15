@@ -2649,7 +2649,7 @@ Para se entrar em modo de inserção, estando em modo normal, pode-se pressionar
 | _A_           | _Entra no modo de inserção no final da linha_        |
 | _o_           | _Entra no modo de inserção uma linha abaixo_         |
 | _O_           | _Entra em modo de inserção uma linha acima_          |
-| _<Esc>_       | _Sai do modo de inserção_                            |
+| _\<Esc\>_       | _Sai do modo de inserção_                            |
 
 #### **Copiar, Colar e Deletar**
 
