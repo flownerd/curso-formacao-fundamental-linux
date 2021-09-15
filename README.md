@@ -2456,3 +2456,372 @@ eht ni debircsed era margorp hcae rof smret noitubirtsid tcaxe eht
 tnetxe eht ot ,YTNARRAW ON YLETULOSBA htiw semoc xuniL/UNG naibeD
 .wal elbacilppa yb dettimrep
 ```
+
+# **Editores de Texto**
+
+## **Introdução**
+
+A edicão de texto é uma das tarefas mais frequentemente executadas por seres humanos em ambientes computacionais, em qualquer nível. Usuários finais, administradores de sistemas, programadores de software, desenvolvedores web, e tantas outras categorias, todos eles, constantemente, necessitam editar textos.
+
+Usuários finais editam texto para criar documentos, enviar e-mails, atualizar o blog, escrever recados ou simplesmente trocar mensagens instantâneas pela internet. Administradores de sistemas editam arquivos de configuração, criam regras de segurança, editam scripts e manipulam saídas de comandos armazenados em arquivos de texto. Programadores desenvolvem códigos-fonte e a documentação de programas essencialmente em editores de texto. Desenvolvedores web interagem com editores de texto para criarem layout e dinâmica de sites.
+
+Tamanha é a frequência e onipresença da tarefa de edição de texto que a eficiência, flexibilidade e o repertório de ferramentas de editores de texto tornam-se quesitos críticos para se atingir produtividade e conforto na edição de textos.
+
+Qualquer tarefa de aprendizado requer um certo esforço. Todo programa introduz novos conceitos, opções e configurações que transformam o modo de operação do usuário. Em princípio, quanto maior o esforço, maior o benefício. Quem quer apenas escrever textos, pode-se contentar com um editor básico, cuja as únicas opções ao digitar o texto, abrir e salvar o documento ou pode utilizar um editor que permita pré-configurações, formatar o conteúdo, revisar a ortografia, etc, além da ação básica que é escrever textos.
+
+Qualquer usuário de computador pode abrir o primeiro tipo de editor e imediatamente começar a escrever, a curto prazo, sua ação terá consequências imediatas e não requer conhecimentos adicionais. Por outro lado, esse usuário terá que fazer esforço para digitar o mesmos cabeçalho todos os dias.
+
+O outro tipo de editor permite que o usuário pré-configure o cabeçalho do documento e todos os dias esse trecho já estará digitado. Em contrapartida, o usuário deve aprender como pré-configurar o editor. O que requer esforço para aprender a utilizar o programa escolhido. O benefício somente será observado a médio/longo prazo, quando o tempo ganho ao utilizar a configuração será superior ao tempo consumido aprendendo sobre o programa.
+
+## **O editor Nano**
+
+Nano é um editor que deve ser executado a partir de um terminal, e se concentra em simplicidade. Nano é um clone do antigo editor de texto Pico, o editor para o cliente de e-mail Pine, que foi muito popular lá pelos anos 90, em UNIX e sistemas do tipo UNIX. O Pine foi substituído pelo Alpine e o Pico pelo Nano, mas algumas coisas não mudaram - assim como a simplicidade de edição com o Nano.
+
+Nano foi criado em 1999 com o nome de "TIP" (uma sigla, um acrônimo recursivo que significa "TIP Isn't Pine", ou "TIP não é o Pine") por Chris Allagretta. Allagretta decidiu criar este clone do Pico porque o programa não foi liberado sob a GPL. O nome foi mudado oficialmente em 10 de janeiro de 2000 para diminuir a confusão entre o novo editor e o comando "tip" (o comando "tip" é comum em Sun Solaris).
+
+Nano usa combinações muito simples de teclas para trabalhar com arquivos. Um arquivo é aberto ou iniciado com o comando:
+
+```bash
+root@flownerd:~# nano <nomedoarquivo>
+```
+
+Onde <nomedoarquivo> é o nome do arquivo que você deseja abrir. Ou, se você precisa editar um arquivo que somente o usuário root tem acesso, faça
+
+```bash
+root@flownerd:~# sudo nano <nomedoarquivo>
+```
+
+Quando o arquivo estiver aberto no Nano, você verá uma pequena lista de exemplos de comando na parte inferior da janela do terminal.
+
+Todas as combinações de teclas para Nano começam com a tecla CTRL. Para executar um comando você deve manter a tecla CTRL pressionada e clicar na segunda tecla para executar a ação. As combinações mais comuns para Nano são:
+
+- CTRL-X - Sai do editor. Se você estiver no meio da edição de um arquivo, o processo de saída irá perguntar se você quer salvar seu trabalho.
+- CTRL-R - Ler um arquivo em seu arquivo de trabalho atual. Isso permite que você adicione o texto de outro arquivo enquanto trabalha dentro de um novo arquivo.
+- CTRL-C - Mostra a posição atual do cursor.
+- CTRL-K - 'recorta' o texto.
+- CTRL-U - 'cola' o texto.
+- CTRL-S - Salva o arquivo e continua trabalhando.
+- CTRL-T - verifica a ortografia do seu texto.
+- CTRL-W - faz uma busca no texto.
+- CTRL-A - leva o cursor para o início da linha.
+- CTRL-E - leva o cursor para o fim da linha.
+- CTRL-G - mostra a ajuda do Nano.
+
+Para obter mais comandos do nano basta digitar CTRL + G
+
+## **O editor VI**
+
+O VI é um dos editores de texto mais populares em sistemas de tipo Unix/Linux. Apesar da sua ergonomia muito limitada, este editor é fantástico, com ele é possível fazer coisas inacreditáveis. Muitos usuários do mundo Unix/Linux preferem optar por outros editores devido sua complexidade, como joe, elvis, nano, pico, mcedit, emacs etc. Vale ressaltar que este artigo não tem como finalidade levantar nenhuma discussão quanto a preferência dos usuários com relação aos outros editores de textos.
+
+O programa foi criado por Bill Joy em 1976 para o BSD. O nome VI é uma forma abreviada para visual. Em 1991 foi lançado o editor vim, uma derivação melhorada do vi (o nome vim é abreviação para Vi IMproved, ou Vi Melhorado). Ele está presente em quase todas as distribuições Linux, oferecendo mais recursos que seu antecessor.
+
+Usuários do editor Emacs, que também surgiu em 1976, acabam sempre gerando discussões com usuários mais assíduos do vi por questões de gosto pessoal, apesar de que o padrão Unix exige a presença do editor vi, o que o torna mais disseminado.
+
+Como é pequeno e leve, pode ser colocado dentro de disquetes para ser utilizado em manutenção ou mesmo usado em situações em que há pouco recurso computacional.
+
+Sintaxe para abrir um arquivo com o vim
+
+```bash
+root@flownerd:~# vim <nomedoarquivo>
+```
+
+### **Ajuda integrada**
+
+O Vim possui uma ajuda integrada muito completa, s ̃ao mais de 100 arquivos somando milhares de linhas. O único inconveniente é não haver ainda tradução para o português, sendo o inglês seu idioma oficial; entretanto, as explicações costumam ser sintéticas e diretas, de forma que noções em inglês seriam suficientes para a compreensão de grande parte do conteúdo da ajuda integrada.
+
+**OBS:** No Vim quase todos os comandos podem ser abreviados, no caso "help" pode ser chamado por "h" e assim por diante. Um comando só pode ser abreviado até o ponto em que este nome mais curto não coincida com o nome de algum outro comando existente.
+
+Para chamar a ajuda do Vim pressione Esc e em seguida:
+
+| _Comando_ | _Descrição_                               |
+| :-------- | :---------------------------------------- |
+| _:help_   | _Versão longa do comando_                 |
+| _:h_      | _Versão abreviada do comando_             |
+| _F1_      | _Versão por atalho de funções do teclado_ |
+
+### **Modos de operação**
+
+A tabela abaixo mostra uma referência rápida para os modos de operação do Vim, a seguir mais detalhes sobre cada um dos modos.
+
+| **_Modo_** | **_Descrição_**                                 | **_Atalho_**   |
+| :--------- | :---------------------------------------------- | :------------- |
+| _Normal_   | _Para deletar, copiar, formatar, etc_           | _<Esc>_        |
+| _Inserção_ | _Prioritariamente, digitação de texto_          | _I,a,I,A,o,O_  |
+| _Visual_   | _Seleção de blocos verticais e linhas inteiras_ | _V, v, Ctrl-v_ |
+| _Comando_  | _Uma verdadeira linguagem de programação_       | _<Esc>:_       |
+
+Em oposição a esmagadora maioria dos editores o Vim é um editor que trabalha com "modos de operação (modo de inserção, modo normal, modo visual e etc)", o que a princípio dificulta a vida do iniciante, mas abre um universo de possibilidades, pois ao trabalhar com modos distintos uma tecla de atalho pode ter vários significados, exemplificando: Em modo normal pressionar 'dd' apaga a linha atual, já a em modo de inserção ele irá se comportar como se você estivesse usando qualquer outro editor, ou seja, irá inserir duas vezes a letra 'd'.
+
+Em modo normal pressionar a tecla 'v' inicia uma seleção visual (use as setas de direção). Para sair do novo visual <Esc>. Como um dos princípios do vim é agilidade pode-se usar ao invés de setas (em modo normal) as letras h,l,k,j como se fossem setas:
+
+```bash
+       k
+
+h             l
+
+       j
+```
+
+Imagine as letras acima como teclas de diração, a letra 'k' é uma seta acima da letra 'j' é uma seta para abaixo e assim por diante.
+
+### **Entrando em modo de edição**
+
+| **_Comando_** | **_Descrição_**                                     |
+| :------------ | :-------------------------------------------------- |
+| _a_           | _Inicia inserção de texto após o caractere atual_   |
+| _i_           | _Inicia inserção de texto antes do caractere atual_ |
+| _A_           | _Inicia inserção de texto no final da linha_        |
+| _I_           | _Inicia inserção de texto no começo da linha_       |
+| _o_           | _Inicia a inserção de texto na linha abaixo_        |
+| _O_           | _Inicia a inserção de texto na linha acima_         |
+
+Outra possibilidade é utilizar a tecla <Insert> para entrar no modo de inserção de texto antes do caractere atual, ou seja, o mesmo que a tecla i. Uma vez no modo de inserção, a tecla <Insert> permite alternar o modo de digitação e inserção de simples de caracteres para substituição de caracteres.
+
+Agora começamos a sentir o gostinho de usar o Vim, uma tecla seja maiúscula ou minúscula, faz muita diferença se você não estiver em modo de inserção, e para sair do modo de inserção e voltar ao modo normal sempre use <Esc>.
+
+### **Erros comuns**
+
+Estando em modo de inserção pressionar 'j' na intenção de rolar o documento, neste caso estaremos inserindo simplesmente a letra 'j'.
+
+Estando em modo normal acionar acidentalmente o "<Caps Lock>" e tentar rolar o documento usando a letra 'J', o efeito é a junção das linhas, alias um ótimo recurso quando a intenção é de fato esta.
+
+Em modo normal tentar digitar um número seguido de uma palavra e ao perceber que nada está sendo digitado, iniciar o modo de inserção, digitando por fim o que se queria, o resultado é que o número que foi digitado inicialmente vira um quantificador para o que se digitou ao entrar no modo de inserção. A palavra aparecerá repetida na quantidade do número digitado. Assim, se você quiser digitar 10 vezes "isto é e um teste" faça assim:
+
+```bash
+<Esc> ........... Se assegure de estar em modo normal
+
+10 .............. Quantificador
+
+i ............... Entra no modo de inserção
+
+Isto é um teste <Enter> <Esc>
+```
+
+### **Editando**
+
+A principal função de um editor de textos é editar textos. Parece óbvio, mas em meio a inúmeros recursos extras essa simples e crucial função perde-se entre todos os demais.
+
+#### **Abrindo o arquivo para edição**
+
+Portanto, a primeira coisa a fazer é abrir um arquivo. Como visto, para abrir
+
+um arquivo com Vim, digite em um terminal:
+
+```bash
+root@flownerd:~# vim texto.txt
+```
+
+Onde texto.txt é o nome do arquivo que deseja-se criar ou editar.
+
+Caso deseja abrir o arquivo na linha 10, usa-se:
+
+```bash
+root@flownerd:~# vim +10 arquivo
+```
+
+Se quiser abrir o arquivo na linha que contém um determinado padrão, digite:
+
+```bash
+root@flownerd:~# vim +/padrão arquivo
+```
+
+Caso o padrão tenha espaços no nome coloque entre aspas ou use escape "\" a fim de não obter erro.
+
+Se o vim for aberto sem indicação de arquivo pode-se indicar o arquivo a ser editado em modo de comando desta forma
+
+```bash
+:e /caminho/do/arquivo
+```
+
+### **Escrevendo o texto**
+
+O Vim é um editor que possuí diferentes modos de edição. Entre eles está o modo de inserção, que é o modo onde escreve-se o texto naturalmente.
+
+Para se entrar em modo de inserção, estando em modo normal, pode-se pressionar qualquer uma das teclas abaixo:
+
+#### **Inserindo**
+
+| **_Comando_** | **_Descrição_**                                      |
+| :------------ | :--------------------------------------------------- |
+| _i_           | _Entra no modo de inserção antes do caractere atual_ |
+| _I_           | _Entra no modo de inserção no começo da linha_       |
+| _a_           | _Entra no modo de inserção após o caractere atual_   |
+| _A_           | _Entra no modo de inserção no final da linha_        |
+| _o_           | _Entra no modo de inserção uma linha abaixo_         |
+| _O_           | _Entra em modo de inserção uma linha acima_          |
+| _<Esc>_       | _Sai do modo de inserção_                            |
+
+#### **Copiar, Colar e Deletar**
+
+| **_Comando_** | **_Descrição_**                                            |
+| :------------ | :--------------------------------------------------------- |
+| _dd_          | _Deleta a linha atual_                                     |
+| _D_           | _Deleta o restante da linha_                               |
+| _d$_          | _Deleta do ponto atual até o final da linha_               |
+| _d^_          | _Deleta do cursor ao primeiro caractere não-nulo da linha_ |
+| _d0_          | _Deleta do cursor ao início da linha_                      |
+| _yy_          | _Copia a linha atual_                                      |
+| _Y_           | _Copia a linha atual_                                      |
+| _ye_          | _Copia do cursor ao fim da palavra_                        |
+| _yb_          | _Copia do começo da palavra ao cursor_                     |
+| _p_           | _Cola o que foi copiado ou deletado abaixo_                |
+| _P_           | _Cola o que foi copiado ou deletado acima_                 |
+| _[p_          | _Cola o que foi copiado ou deletado antes do cursor_       |
+| _]p_          | _Cola o que foi copiado ou deletado após o cursor_         |
+| _x_           | _Apaga o caractere sob o cursor_                           |
+| _xp_          | _Troca letras de lugar_                                    |
+| _ddp_         | _Troca linhas de lugar_                                    |
+| _d5x_         | _Apaga os próximos 5 caracteres_                           |
+| _dd_          | _Apaga a linha atual_                                      |
+| _5dd_         | _Apaga 5 linhas (também pode ser: d5d)_                    |
+| _dw_          | _Apaga uma palavra_                                        |
+| _5dw_         | _Apaga 5 palavras (também pode ser: d5w)_                  |
+| _dl_          | _Apaga uma letra (sinônimo: x)_                            |
+| _dgg_         | _Apaga até o início do arquivo_                            |
+| _dG_          | _Apaga até o final do arquivo_                             |
+| _d%_          | _Deleta até o próximo (,[,{_                               |
+| _da"_         | _Deleta aspas com conteúdo_                                |
+| _diw_         | _Apaga palavra mesmo que não esteja posicionado no início_ |
+| _dip_         | _Apaga o parágrafo atual_                                  |
+| _d4b_         | _Apaga as quatro palavras anteriores_                      |
+| _dfx_         | _Apaga até o próximo 'x'_                                  |
+| _d/casa/+1_   | _Deleta até a linha após a palavra casa_                   |
+
+Trocando a letra 'd' nos comandos acima por 'c' de change "mudança" ao invés de deletar será feita uma mudança no conteúdo. Por exemplo:
+
+| **_Comando_** | **_Descrição_**                 |
+| :------------ | :------------------------------ |
+| _ciw_         | _Modifica uma palavra_          |
+| _cip_         | _Modifica um parágrafo_         |
+| _cis_         | _Modifica uma sentença_         |
+| _C_           | _Modifica até o final da linha_ |
+
+#### **Copiando sem deletar**
+
+| **_Comando_** | **_Descrição_**                                                 |
+| :------------ | :-------------------------------------------------------------- |
+| _yy_          | _Copia a linha atual (sinônimo: Y)_                             |
+| _5yy_         | _Copia 5 linhas (também pode ser: y5y ou 5Y)_                   |
+| _y/pat_       | _Copia até 'pat'_                                               |
+| _yw_          | _Copia uma palavra_                                             |
+| _5yw_         | _Copia 5 palavras (também pode ser: y5w)_                       |
+| _yl_          | _Copia uma letra_                                               |
+| _5yl_         | _Copia 5 letras (também pode ser: y5l)_                         |
+| _y^_          | _Copia da posição atual até o início da linha (sinônimo: y0)_   |
+| _y$_          | _Copia da posição atual até o final da linha_                   |
+| _ygg_         | _Copia da posição atual até o início do arquivo_                |
+| _yG_          | _Copia da posição atual até o final do arquivo_                 |
+| _yi"_         | _Copia trecho entre aspas (atual -inner)_                       |
+| _vip_         | _Seleção visual para parágrafo atual 'inner paragraph'_         |
+| _yip_         | _Copia o parágrafo atual_                                       |
+| _yit_         | _Copia a tag igual 'inner tag' útil para arquivo HTML,XML, etc_ |
+
+Digite 'P' (p maiúsculo) para colar o texto recém copiado na posição onde encontra-se o cursor, ou 'p' para colar o texto na posição imediatamente após o cursor
+
+### **Comandos de movimentação**
+
+| **_Comando_** | **_Descrição_**                               |
+| :------------ | :-------------------------------------------- |
+| _Ctrl+f_      | _Move o cursor para a próxima tela_           |
+| _Ctrl+b_      | _Move o cursor para a tela anterior_          |
+| _H_           | _Move o cursor para a primeira linha da tela_ |
+| _M_           | _Move o cursor para o meio da tela_           |
+| _L_           | _Move o cursor para a última linha da tela_   |
+| _h_           | _Move o cursor um caractere a esquerda_       |
+| _j_           | _Move o cursor para a próxima linha_          |
+| _k_           | _Move o cursor para linha anterior_           |
+| _l_           | _Move o cursor um caractere a direita_        |
+
+### **Comandos de busca**
+
+| **_Comando_** | **_Descrição_**                                                            |
+| :------------ | :------------------------------------------------------------------------- |
+| _/palavra_    | _Busca pela palavra ou caractere em todo o texto_                          |
+| _?palavra_    | _Move o cursor para a ocorrência anterior da palavra_                      |
+| _n_           | _Repete o último comando / ou ?_                                           |
+| _N_           | _Repete o último comando / ou ? , na direção reversa_                      |
+| _Ctrl+g_      | _Mostra o nome do arquivo, o número da linha corrente e o total de linhas_ |
+
+#### **Movendo linhas**
+
+| **_Comando_**  | **_Descrição_**                               |
+| :------------- | :-------------------------------------------- |
+| _:20,30m 0_    | _Move da linha '20' até '30' para o começo_   |
+| _:20,/pat/m 5_ | _Move da linha '20' até 'pat' para a linha 5_ |
+| _:m-5_         | _Move a linha atual 5 posições para acima_    |
+| _:m0_          | _Move a linha atual para o começo_            |
+| _:m$_          | _Move a linha para o final do comento_        |
+
+#### **Desfazendo**
+
+| **_Comando_** | **_Descrição_**                          |
+| :------------ | :--------------------------------------- |
+| _u_           | _Desfazer_                               |
+| _U_           | _Desfaz mudança na última linha editada_ |
+| _Ctrl-r_      | _Refaz_                                  |
+
+#### **Salvando**
+
+| **_Comando_**    | **_Descrição_**                                    |
+| :--------------- | :------------------------------------------------- |
+| _:w_             | _Salva_                                            |
+| _:wq_            | _Salva e sai_                                      |
+| _:w nome_        | _Salvar como_                                      |
+| _:saveas nome_   | _Salvar como_                                      |
+| _:sav nome_      | _Mesmo que "saveas nome"_                          |
+| _:x_             | _Salva se existirem modificações_                  |
+| _:10,20 w! nome_ | _Salva da linha 10 até a linha 20 no arquivo nome_ |
+| _:w!_            | _Salvamento forçado_                               |
+| _:e!_            | _Reinicia a edição ignorando alterações_           |
+| _:X_             | _Salva o arquivo com senha_                        |
+
+#### **Dicas**
+
+| **_Comando_**        | **_Descrição_**                                                                                                             |
+| :------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| _. (ponto)_          | _Repete a última ação_                                                                                                      |
+| _:sort u_            | _Ordena e remove as linhas duplicadas_                                                                                      |
+| _:sort n_            | _Ordena numericamente_                                                                                                      |
+| _:1,15 sort n_       | _Ordena numericamente da linha 1 até a linha 15_                                                                            |
+| _:sort /.\*\%8v/_    | _Ordena à partir do 8º caractere_                                                                                           |
+| _:pwd_               | _Exibe o diretório atual_                                                                                                   |
+| _:cd /diretório_     | _Muda de diretório_                                                                                                         |
+| _:changes_           | _Visualiza a lista de alterações_                                                                                           |
+| _gUU_                | _Converte a linha para maiúsculo_                                                                                           |
+| _guu_                | _Converte a linha para minúsculo_                                                                                           |
+| _gUiw_               | _Converte a palavra atual para maiúsculo_                                                                                   |
+| _~_                  | _Altera o case do caractere atual_                                                                                          |
+| _:g /palavra/ m 0_   | _Move as linhas contendo 'palavra' para o começo (linha zero)_                                                              |
+| _:v/^192.168.1.\*/d_ | \*Apaga as linhas que contenham 192.168.1\*.\*                                                                              |
+| _:v/\S/d_            | _Apaga linhas vazias_                                                                                                       |
+| _:0put =range(1,10)_ | _Insere uma sequência de 1 a 10 à partir da linha inicial "zero"_                                                           |
+| _:r arquivo_         | _Insere o arquivo na linha atual_                                                                                           |
+| _:0r arquivo_        | _Insere o arquivo na primeira linha_                                                                                        |
+| _:'0_                | _Abre o último arquivo editado_                                                                                             |
+| _:'1_                | _Abre o penúltimo arquivo editado_                                                                                          |
+| _:split arquivo_     | _Divide a tela do vim em horizontal podendo manipular dois arquivos ao mesmo tempo para mudar de arquivo utilize Ctrl + ww_ |
+| _:vsplit arquivo_    | _Divide a tela do vim em vertical podendo manipular dois arquivos ao mesmo tempo para mudar de arquivo utilize Ctrl + ww_   |
+
+Para gerar uma sequência de endereços ips por exemplo de 192.168.1.1 até 192.168.1.5 podemos utilizar o seguinte comando no vim
+
+```bash
+:for i in range(1,5) | .put ='192.168.1.' .i | endfor
+```
+
+### **Comparando arquivo com o vimdiff**
+
+O vim possui um modo para checagem de diferenças entre arquivos, é bastante útil especialmente para programadores, para saber quais são as diferenças entre dois arquivos faz-se:
+
+```bash
+root@flownerd:~# vimdiff arquivo1.txt arquivo2.txt
+```
+
+### **Utilizando o vimtutor**
+
+Para quem quiser aprender a trabalhar com o vim "editando", basta usar o comando "vimtutor"
+
+```bash
+root@flownerd:~# vimtutor
+```
+
+Este comando vai abrir um arquivo TXT editável, que no corpo dele, há instruções (em inglês) de como editar textos e fazer movimentação.
