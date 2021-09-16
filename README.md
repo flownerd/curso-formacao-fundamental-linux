@@ -2545,10 +2545,10 @@ A tabela abaixo mostra uma referência rápida para os modos de operação do Vi
 
 | **_Modo_** | **_Descrição_**                                 | **_Atalho_**   |
 | :--------- | :---------------------------------------------- | :------------- |
-| _Normal_   | _Para deletar, copiar, formatar, etc_           | _<Esc>_        |
+| _Normal_   | _Para deletar, copiar, formatar, etc_           | _\<Esc\>_      |
 | _Inserção_ | _Prioritariamente, digitação de texto_          | _I,a,I,A,o,O_  |
 | _Visual_   | _Seleção de blocos verticais e linhas inteiras_ | _V, v, Ctrl-v_ |
-| _Comando_  | _Uma verdadeira linguagem de programação_       | _<Esc>:_       |
+| _Comando_  | _Uma verdadeira linguagem de programação_       | _\<Esc\>:_     |
 
 Em oposição a esmagadora maioria dos editores o Vim é um editor que trabalha com "modos de operação (modo de inserção, modo normal, modo visual e etc)", o que a princípio dificulta a vida do iniciante, mas abre um universo de possibilidades, pois ao trabalhar com modos distintos uma tecla de atalho pode ter vários significados, exemplificando: Em modo normal pressionar 'dd' apaga a linha atual, já a em modo de inserção ele irá se comportar como se você estivesse usando qualquer outro editor, ou seja, irá inserir duas vezes a letra 'd'.
 
@@ -2649,7 +2649,7 @@ Para se entrar em modo de inserção, estando em modo normal, pode-se pressionar
 | _A_           | _Entra no modo de inserção no final da linha_        |
 | _o_           | _Entra no modo de inserção uma linha abaixo_         |
 | _O_           | _Entra em modo de inserção uma linha acima_          |
-| _\<Esc\>_       | _Sai do modo de inserção_                            |
+| _\<Esc\>_     | _Sai do modo de inserção_                            |
 
 #### **Copiar, Colar e Deletar**
 
