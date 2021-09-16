@@ -2671,7 +2671,7 @@ Para se entrar em modo de inserção, estando em modo normal, pode-se pressionar
 | _x_           | _Apaga o caractere sob o cursor_                           |
 | _xp_          | _Troca letras de lugar_                                    |
 | _ddp_         | _Troca linhas de lugar_                                    |
-| _d5x_         | _Apaga os próximos 5 caracteres_                           |
+| _5x_          | _Apaga os próximos 5 caracteres_                           |
 | _dd_          | _Apaga a linha atual_                                      |
 | _5dd_         | _Apaga 5 linhas (também pode ser: d5d)_                    |
 | _dw_          | _Apaga uma palavra_                                        |
@@ -2750,7 +2750,7 @@ Digite 'P' (p maiúsculo) para colar o texto recém copiado na posição onde en
 | _:20,/pat/m 5_ | _Move da linha '20' até 'pat' para a linha 5_ |
 | _:m-5_         | _Move a linha atual 5 posições para acima_    |
 | _:m0_          | _Move a linha atual para o começo_            |
-| _:m$_          | _Move a linha para o final do comento_        |
+| _:m$_          | _Move a linha para o final do documento_      |
 
 #### **Desfazendo**
 
@@ -2792,7 +2792,7 @@ Digite 'P' (p maiúsculo) para colar o texto recém copiado na posição onde en
 | _gUiw_               | _Converte a palavra atual para maiúsculo_                                                                                   |
 | _~_                  | _Altera o case do caractere atual_                                                                                          |
 | _:g /palavra/ m 0_   | _Move as linhas contendo 'palavra' para o começo (linha zero)_                                                              |
-| _:v/^192.168.1.\*/d_ | \*Apaga as linhas que contenham 192.168.1\*.\*                                                                              |
+| _:/^192.168.1.\*/d_  | \*Apaga as linhas que contenham 192.168.1\*.\*                                                                              |
 | _:v/\S/d_            | _Apaga linhas vazias_                                                                                                       |
 | _:0put =range(1,10)_ | _Insere uma sequência de 1 a 10 à partir da linha inicial "zero"_                                                           |
 | _:r arquivo_         | _Insere o arquivo na linha atual_                                                                                           |
